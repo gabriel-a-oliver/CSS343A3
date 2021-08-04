@@ -1,3 +1,5 @@
+/* Assignment 3 was made by Pankhuri Singhal and Gabriel Oliver */
+
 #include <iostream>
 #include <climits>
 #include <map>
