@@ -56,7 +56,6 @@ void Graph::depthFirstTraversal(std::string startLabel,
 	visitedVertList.clear();
 	delete visitedVertList;
 	visitedVertList = new list<Vertices>;
-
 	Vertex* startingVertex = findVertex();
 
 	depthFirstTraversalHelper(startingVertex, visit)
@@ -75,6 +74,13 @@ void Graph::depthFirstTraversal(std::string startLabel,
     call the function visit on each vertex label */
 void Graph::breadthFirstTraversal(std::string startLabel,
                                   void visit(const std::string&)) {
+	visitedVertList.clear();
+	delete visitedVertList;
+	visitedVertList = new list<Vertices>;
+	Vertex* startingVertex = findVertex();
+
+	bfsQueue.push(startingVertex);
+	visitedVertList.push_back(startingVertex);
 
 	/*
 	Mark all nodes as unvisited
@@ -117,7 +123,7 @@ void Graph::depthFirstTraversalHelper(Vertex* startVertex,
 	string startVertexLabel = startVertex.getLabel();
 	visit(startVertexLabel);
 	startVertex.visit();
-	visitedVertList.push(startVertex);
+	visitedVertList.push_back(startVertex);
 
 	for (Vertex* nextNeighbor = startVertex.getNextNeighbor(); nextNeighbor !=
 			startVertexLabel; nextNeighbor = startVertex.getNextNeighbor) {
