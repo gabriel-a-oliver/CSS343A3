@@ -12,7 +12,7 @@
 //Gabe Code
 #include <stack>
 #include <queue>
-#include <array>
+#include <list>
 //End of Gabe Code
 
 #include "vertex.h"
@@ -103,8 +103,8 @@ class Graph {
     Vertex* findOrCreateVertex(const std::string& vertexLabel);
 
     // Gabriel Code
-    std::array<Vertex, numberOfVertces> vertexArray;
-    std::stack<Vertex> dfsStack;
+    std::list<Vertex> verticesList;
+    std::list<Vertex> visitedVertList;
     std::queue<Vertex> bfsQueue;
     // End of Gabe Code
 

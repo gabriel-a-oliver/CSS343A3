@@ -53,18 +53,22 @@ void Graph::readFile(std::string filename) {}
     call the function visit on each vertex label */
 void Graph::depthFirstTraversal(std::string startLabel,
                                 void visit(const std::string&)) {
+	visitedVertList.clear();
+	delete visitedVertList;
+	visitedVertList = new list<Vertices>;
 
+	Vertex* startingVertex = findVertex();
+
+	depthFirstTraversalHelper(startingVertex, visit)
 	/*
 		Mark all nodes as unvisited
 		call dfsHelper with startVertex
 
-	 	dfsHelper: vertex
-		visit vertex
-		for each neighbour, getNextNeighbor of vertex as n
-			if n is not visited
-				call dfsHelper with n
-	*/
 
+	*/
+	unvisitVertices();
+	visitedVertList.clear();
+	delete visitedVertList;
 }
 
 /** breadth-first traversal starting from startLabel
@@ -109,14 +113,38 @@ void Graph::djikstraCostToAllVertices(
 
 /** helper for depthFirstTraversal */
 void Graph::depthFirstTraversalHelper(Vertex* startVertex,
-                                      void visit(const std::string&)) {}
+                                      void visit(const std::string&)) {
+	string startVertexLabel = startVertex.getLabel();
+	visit(startVertexLabel);
+	startVertex.visit();
+	visitedVertList.push(startVertex);
+
+	for (Vertex* nextNeighbor = startVertex.getNextNeighbor(); nextNeighbor !=
+			startVertexLabel; nextNeighbor = startVertex.getNextNeighbor) {
+		if (!nextNeighbor.isVisited()) {
+			depthFirstTraversalHelper(nextNeighbor, visit)
+		}
+	}
+
+	/*
+	dfsHelper: vertex
+		visit vertex
+		for each neighbour, getNextNeighbor of vertex as n
+			if n is not visited
+				call dfsHelper with n
+	*/
+}
 
 /** helper for breadthFirstTraversal */
 void Graph::breadthFirstTraversalHelper(Vertex*startVertex,
                                         void visit(const std::string&)) {}
 
 /** mark all verticies as unvisited */
-void Graph::unvisitVertices() {}
+void Graph::unvisitVertices() {
+	for (Vertex* vert : visitedVertList) {
+		vert.unvisit();
+	}
+}
 
 /** find a vertex, if it does not exist return nullptr */
 Vertex* Graph::findVertex(const std::string& vertexLabel) const { return nullptr; }
