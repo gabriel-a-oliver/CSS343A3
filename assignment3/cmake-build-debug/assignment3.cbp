@@ -8,86 +8,84 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="B:/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3/cmake-build-debug"/>
+				<Option working_dir="C:/Users/olive/Documents/GitHub/CSS343A3/assignment3/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 all"/>
-					<CompileFile command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="assignment3">
-				<Option output="B:/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3/cmake-build-debug/assignment3.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="B:/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3/cmake-build-debug"/>
+				<Option output="C:/Users/olive/Documents/GitHub/CSS343A3/assignment3/cmake-build-debug/assignment3.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/olive/Documents/GitHub/CSS343A3/assignment3/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="msvc8"/>
 				<Compiler>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include"/>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include"/>
 					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 assignment3"/>
-					<CompileFile command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 assignment3"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="assignment3/fast">
-				<Option output="B:/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3/cmake-build-debug/assignment3.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="B:/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3/cmake-build-debug"/>
+				<Option output="C:/Users/olive/Documents/GitHub/CSS343A3/assignment3/cmake-build-debug/assignment3.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/olive/Documents/GitHub/CSS343A3/assignment3/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="msvc8"/>
 				<Compiler>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\ATLMFC\include"/>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.27.29110\include"/>
+					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29910\include"/>
 					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\ucrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\shared"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\winrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.18362.0\cppwinrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.19041.0\cppwinrt"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 assignment3/fast"/>
-					<CompileFile command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 assignment3/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="B:/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3/cmake-build-debug"/>
+				<Option working_dir="C:/Users/olive/Documents/GitHub/CSS343A3/assignment3/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
-					<CompileFile command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="B:/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3/cmake-build-debug"/>
+				<Option working_dir="C:/Users/olive/Documents/GitHub/CSS343A3/assignment3/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\olive\Documents\GitHub\CSS343A3\assignment3\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="B:/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3/assignment3.cpp">
+		<Unit filename="C:/Users/olive/Documents/GitHub/CSS343A3/assignment3/assignment3.cpp">
 			<Option target="assignment3"/>
 		</Unit>
-		<Unit filename="B:/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3/CMakeLists.txt">
+		<Unit filename="C:/Users/olive/Documents/GitHub/CSS343A3/assignment3/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

@@ -1,4 +1,4 @@
-/home/olivergabe/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /mnt/b/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3
+/home/olivergabe/cmake-3.20.3-linux-x86_64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3
 -- Configuring done
 -- Generating done
--- Build files have been written to: /mnt/b/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3/cmake-build-wsldebug
+-- Build files have been written to: /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/cmake-build-wsldebug

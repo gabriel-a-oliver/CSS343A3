@@ -1,4 +1,4 @@
-C:\Users\olive\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\211.7442.42\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - NMake Makefiles" B:\HardDrive_Documents\School\University_of_Washington_Bothell\UWB_Classes\UWB_2020-2021\UWB_Summer_2021\CSS343\Assignments\Assignment3\CSS343A3\assignment3
+C:\Users\olive\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\211.7442.42\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - NMake Makefiles" C:\Users\olive\Documents\GitHub\CSS343A3\assignment3
 -- Configuring done
 -- Generating done
--- Build files have been written to: B:/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3/cmake-build-debug
+-- Build files have been written to: C:/Users/olive/Documents/GitHub/CSS343A3/assignment3/cmake-build-debug

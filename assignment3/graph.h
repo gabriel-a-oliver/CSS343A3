@@ -9,6 +9,12 @@
 #include <map>
 #include <string>
 
+//Gabe Code
+#include <stack>
+#include <queue>
+#include <array>
+//End of Gabe Code
+
 #include "vertex.h"
 #include "edge.h"
 
@@ -95,6 +101,13 @@ class Graph {
 
     /** find a vertex, if it does not exist create it and return it */
     Vertex* findOrCreateVertex(const std::string& vertexLabel);
+
+    // Gabriel Code
+    std::array<Vertex, numberOfVertces> vertexArray;
+    std::stack<Vertex> dfsStack;
+    std::queue<Vertex> bfsQueue;
+    // End of Gabe Code
+
 };  // end Graph
 
 #endif  // GRAPH_H
