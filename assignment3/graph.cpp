@@ -52,12 +52,40 @@ void Graph::readFile(std::string filename) {}
 /** depth-first traversal starting from startLabel
     call the function visit on each vertex label */
 void Graph::depthFirstTraversal(std::string startLabel,
-                                void visit(const std::string&)) {}
+                                void visit(const std::string&)) {
+
+	/*
+		Mark all nodes as unvisited
+		call dfsHelper with startVertex
+
+	 	dfsHelper: vertex
+		visit vertex
+		for each neighbour, getNextNeighbor of vertex as n
+			if n is not visited
+				call dfsHelper with n
+	*/
+
+}
 
 /** breadth-first traversal starting from startLabel
     call the function visit on each vertex label */
 void Graph::breadthFirstTraversal(std::string startLabel,
-                                  void visit(const std::string&)) {}
+                                  void visit(const std::string&)) {
+
+	/*
+	Mark all nodes as unvisited
+	enqueue startVertex to queue
+	mark startVertex as visited
+	while queue is not empty
+ 		w = dequeue
+ 		for each unvisited neighbor u of w
+ 			visit u
+ 			enqueue u
+	Starting from O gives the following visiting order:
+	O P Q R S T U
+	*/
+
+}
 
 /** find the lowest cost from startLabel to all vertices that can be reached
     using Djikstra's shortest-path algorithm
@@ -68,6 +96,12 @@ void Graph::breadthFirstTraversal(std::string startLabel,
 
     cpplint gives warning to use pointer instead of a non-const map
     which I am ignoring for readability */
+
+/*
+Help for this function:
+	auto cmp = [&](std::string a, std::string b) { return weight[a] > weight[b]; };
+	std::priority_queue<std::string, std::vector<std::string>, decltype(cmp)> pq(cmp);
+*/
 void Graph::djikstraCostToAllVertices(
     std::string startLabel,
     std::map<std::string, int>& weight,
