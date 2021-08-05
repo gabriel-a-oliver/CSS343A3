@@ -19,12 +19,20 @@
 
 
 /** constructor, empty graph */
-Graph::Graph() {}
+Graph::Graph() {
+	vertices = new map<std::string, Vertex*>();
+}
 
 /** destructor, delete all vertices and edges
     only vertices stored in map
     no pointers to edges created by graph */
-Graph::~Graph() {}
+Graph::~Graph() {
+	delete vertices;
+	/*for (std::map<std::string, Vertex*>::iterator it = Map.begin(); it != Map.end(); ++it) {
+		delete it;
+	}*/
+	vertices = nullptr;
+}
 
 /** return number of vertices */
 int Graph::getNumVertices() const { return 0; }
@@ -136,7 +144,9 @@ Help for this function:
 void Graph::djikstraCostToAllVertices(
     std::string startLabel,
     std::map<std::string, int>& weight,
-    std::map<std::string, std::string>& previous) {}
+    std::map<std::string, std::string>& previous) {
+
+}
 
 /** helper for depthFirstTraversal */
 void Graph::depthFirstTraversalHelper(Vertex* startVertex,
