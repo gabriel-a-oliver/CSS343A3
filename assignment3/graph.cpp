@@ -53,6 +53,7 @@ void Graph::readFile(std::string filename) {}
     call the function visit on each vertex label */
 void Graph::depthFirstTraversal(std::string startLabel,
                                 void visit(const std::string&)) {
+	unvisitVertices();
 	visitedVertList.clear();
 	delete visitedVertList;
 	visitedVertList = new list<Vertices>;
@@ -74,13 +75,30 @@ void Graph::depthFirstTraversal(std::string startLabel,
     call the function visit on each vertex label */
 void Graph::breadthFirstTraversal(std::string startLabel,
                                   void visit(const std::string&)) {
+	unvisitVertices();
 	visitedVertList.clear();
 	delete visitedVertList;
 	visitedVertList = new list<Vertices>;
 	Vertex* startingVertex = findVertex();
 
 	bfsQueue.push(startingVertex);
+
+	visit(startingVertex.getLabel());
+	startingVertex.visit();
 	visitedVertList.push_back(startingVertex);
+
+	while (!bfsQueue.empty()) {
+		Vertex* currentVert = bfsQueue.pop();
+		for (Vertex* nextNeighbor = currentVert.getNextNeighbor(); nextNeighbor
+			 != currentVert.getLabel(); nextNeighbor = currentVert.getNextNeighbor) {
+			if (!nextNeighbor.isVisited()) {
+				visit(currentVert.getLabel());
+				currentVert.visit();
+				visitedVertList.push_back();
+				bfsQueue.push(nextNeighbor);
+			}
+		}
+	}
 
 	/*
 	Mark all nodes as unvisited
@@ -95,6 +113,9 @@ void Graph::breadthFirstTraversal(std::string startLabel,
 	O P Q R S T U
 	*/
 
+	unvisitVertices();
+	visitedVertList.clear();
+	delete visitedVertList;
 }
 
 /** find the lowest cost from startLabel to all vertices that can be reached
