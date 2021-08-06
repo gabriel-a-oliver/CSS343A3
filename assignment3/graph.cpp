@@ -35,7 +35,7 @@ Graph::~Graph() {
 }
 
 /** return number of vertices */
-int Graph::getNumVertices() const { return 0; }
+int Graph::getNumVertices() const { return vertices.size(); }
 
 /** return number of vertices */
 int Graph::getNumEdges() const { return 0; }
@@ -55,7 +55,20 @@ int Graph::getEdgeWeight(std::string start, std::string end) const { return 0; }
     the first line of the file is an integer, indicating number of edges
     each edge line is in the form of "string string int"
     fromVertex  toVertex    edgeWeight */
-void Graph::readFile(std::string filename) {}
+void Graph::readFile(std::string filename) {
+
+	// Before reading file, clear all previous information !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+	ofstream graphFile;
+	graphFile.open("filename");
+	string numOfEdges;
+	getline(graphFile, numOfEdges);
+	numberOfEdges = (int)numOfEdges;
+
+	for (int i = 0; i < numberOfEdges; i++) {
+		
+	}
+}
 
 /** depth-first traversal starting from startLabel
     call the function visit on each vertex label */
