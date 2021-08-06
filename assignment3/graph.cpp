@@ -66,8 +66,14 @@ void Graph::readFile(std::string filename) {
 	numberOfEdges = (int)numOfEdges;
 
 	for (int i = 0; i < numberOfEdges; i++) {
-		
+		string currentLine;
+		getline(graphFile, currentLine);
+
+		// split up vertices and create any new ones and new edge
+
+		findOrCreateVertex();
 	}
+	graphFile.close();
 }
 
 /** depth-first traversal starting from startLabel
