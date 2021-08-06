@@ -106,6 +106,8 @@ class Graph {
     std::list<Vertex*> verticesList;
     std::list<Vertex*> visitedVertList;
     std::queue<Vertex*> bfsQueue;
+
+    bool verticesEdgePairCompatible(std::string start, std::string end) const;
     // End of Gabe Code
 
 };  // end Graph

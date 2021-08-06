@@ -46,6 +46,15 @@ int Graph::getNumEdges() const { return 0; }
     a vertex cannot connect to itself
     or have multiple edges to another vertex */
 bool Graph::add(std::string start, std::string end, int edgeWeight) {
+	bool compatible = verticesEdgePairCompatible(start, end);
+	if (!compatible) {
+		return false;
+	}
+	/*if (start.compare(end)) {
+		cout << "The start and end vertices cannot be the same" << endl;
+		return false;
+	}
+	// Also make sure there isnt already an edge for this pair!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 	if (map.find(start) == map.end()) {
 		map.add(start, new Vertex(start));
 	}
@@ -58,7 +67,15 @@ bool Graph::add(std::string start, std::string end, int edgeWeight) {
 
 /** return weight of the edge between start and end
     returns INT_MAX if not connected or vertices don't exist */
-int Graph::getEdgeWeight(std::string start, std::string end) const { return 0; }
+int Graph::getEdgeWeight(std::string start, std::string end) const {
+	Vertex* startVert = map.find(start);
+	Vertex* endVert = map.find(endVert);
+	bool compatible = verticesEdgePairCompatible(start, end);
+	if (!compatible) {
+		return INT_MAX;
+	}
+	return startVert.getEdgeWeight(endVert);
+}
 
 /** read edges from file
     the first line of the file is an integer, indicating number of edges
@@ -218,3 +235,14 @@ Vertex* Graph::findVertex(const std::string& vertexLabel) const { return nullptr
 
 /** find a vertex, if it does not exist create it and return it */
 Vertex* Graph::findOrCreateVertex(const std::string& vertexLabel) { return nullptr; }
+
+//Gabe code start
+bool Graph::verticesEdgePairCompatible(std::string start, std::string end) const {
+	if (start.compare(end)) {
+		cout << "The start and end vertices cannot be the same" << endl;
+		return false;
+	}
+	// Also make sure there isnt already an edge for this pair!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	return true;
+}
+//Gabe code end
