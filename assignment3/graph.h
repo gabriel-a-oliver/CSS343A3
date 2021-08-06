@@ -103,9 +103,9 @@ class Graph {
     Vertex* findOrCreateVertex(const std::string& vertexLabel);
 
     // Gabriel Code
-    std::list<Vertex> verticesList;
-    std::list<Vertex> visitedVertList;
-    std::queue<Vertex> bfsQueue;
+    std::list<Vertex*> verticesList;
+    std::list<Vertex*> visitedVertList;
+    std::queue<Vertex*> bfsQueue;
     // End of Gabe Code
 
 };  // end Graph

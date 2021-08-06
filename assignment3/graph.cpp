@@ -56,7 +56,11 @@ int Graph::getEdgeWeight(std::string start, std::string end) const { return 0; }
     each edge line is in the form of "string string int"
     fromVertex  toVertex    edgeWeight */
 void Graph::readFile(std::string filename) {
-
+	delete map;
+	map = new Map<std::string, Vertex*>;
+	delete vertices;
+	vertices = new List<Vertex*>();
+	visitedVertList.clear();
 	// Before reading file, clear all previous information !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 	ofstream graphFile;
@@ -66,12 +70,10 @@ void Graph::readFile(std::string filename) {
 	numberOfEdges = (int)numOfEdges;
 
 	for (int i = 0; i < numberOfEdges; i++) {
-		string currentLine;
+		stringstream currentLine;
 		getline(graphFile, currentLine);
 
-		// split up vertices and create any new ones and new edge
-
-		findOrCreateVertex();
+		add(currentLine[0], currentLine[1], (int)currentLine[2]);
 	}
 	graphFile.close();
 }
