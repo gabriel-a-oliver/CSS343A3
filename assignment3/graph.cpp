@@ -45,7 +45,16 @@ int Graph::getNumEdges() const { return 0; }
     calls Vertex::connect
     a vertex cannot connect to itself
     or have multiple edges to another vertex */
-bool Graph::add(std::string start, std::string end, int edgeWeight) { return true; }
+bool Graph::add(std::string start, std::string end, int edgeWeight) {
+	if (map.find(start) == map.end()) {
+		map.add(start, new Vertex(start));
+	}
+	if (map.find(end) == map.end()) {
+		map.add(end, new Vertex(end));
+	}
+	map.find(start).connect(map.find(end), edgeWeight);
+	return true;
+}
 
 /** return weight of the edge between start and end
     returns INT_MAX if not connected or vertices don't exist */
