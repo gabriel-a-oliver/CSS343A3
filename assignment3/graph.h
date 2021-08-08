@@ -103,6 +103,7 @@ class Graph {
     Vertex* findOrCreateVertex(const std::string& vertexLabel);
 
     // Gabriel Code
+    int numOfEdges;
     std::list<Vertex*> verticesList;
     std::list<Vertex*> visitedVertList;
     std::queue<Vertex*> bfsQueue;

@@ -37,8 +37,10 @@ Graph::~Graph() {
 /** return number of vertices */
 int Graph::getNumVertices() const { return vertices.size(); }
 
-/** return number of vertices */
-int Graph::getNumEdges() const { return 0; }
+/** return number of edges */
+int Graph::getNumEdges() const {
+	return numberOfEdges;
+}
 
 /** add a new edge between start and end vertex
     if the vertices do not exist, create them
@@ -91,11 +93,11 @@ void Graph::readFile(std::string filename) {
 
 	ofstream graphFile;
 	graphFile.open("filename");
-	string numOfEdges;
-	getline(graphFile, numOfEdges);
-	numberOfEdges = (int)numOfEdges;
+	string numOfEdgesStr;
+	getline(graphFile, numOfEdgesStr);
+	numOfEdges = (int)numOfEdgesStr;
 
-	for (int i = 0; i < numberOfEdges; i++) {
+	for (int i = 0; i < numOfEdges; i++) {
 		stringstream currentLine;
 		getline(graphFile, currentLine);
 
