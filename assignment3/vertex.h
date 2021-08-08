@@ -1,14 +1,11 @@
+#ifndef VERTEX_H
+#define VERTEX_H
+
 #include <climits>
-
-#include "vertex.h"
-
-
+#include "vertex.cpp"
 #include <functional>
 #include <map>
 #include <string>
-
-#include "edge.h"
-
 
 ////////////////////////////////////////////////////////////////////////////////
 // This is 80 characters - Keep all lines under 80 characters                 //
@@ -92,3 +89,4 @@ bool Vertex::operator<(const Vertex& rightHandItem) const {
     return lhsLabel.compare(rhsLabel) < 0;
 }
 
+#endif
