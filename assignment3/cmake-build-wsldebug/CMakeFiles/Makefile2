@@ -45,19 +45,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/olivergabe/bin/cmake
+CMAKE_COMMAND = /home/olivergabe/cmake-3.20.3-linux-x86_64/bin/cmake
 
 # The command to remove a file.
-RM = /home/olivergabe/bin/cmake -E rm -f
+RM = /home/olivergabe/cmake-3.20.3-linux-x86_64/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/b/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3
+CMAKE_SOURCE_DIR = /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/b/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3/cmake-build-wsldebug
+CMAKE_BINARY_DIR = /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/cmake-build-wsldebug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -81,14 +81,14 @@ clean: CMakeFiles/assignment3.dir/clean
 CMakeFiles/assignment3.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/assignment3.dir/build.make CMakeFiles/assignment3.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/assignment3.dir/build.make CMakeFiles/assignment3.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/b/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3/cmake-build-wsldebug/CMakeFiles --progress-num=1,2 "Built target assignment3"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/cmake-build-wsldebug/CMakeFiles --progress-num=1,2 "Built target assignment3"
 .PHONY : CMakeFiles/assignment3.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/assignment3.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/b/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3/cmake-build-wsldebug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/cmake-build-wsldebug/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/assignment3.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/b/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3/cmake-build-wsldebug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/cmake-build-wsldebug/CMakeFiles 0
 .PHONY : CMakeFiles/assignment3.dir/rule
 
 # Convenience name for target.

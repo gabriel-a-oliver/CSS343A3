@@ -1,4 +1,4 @@
-# Install script for directory: B:/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3
+# Install script for directory: C:/Users/olive/Documents/GitHub/CSS343A3/assignment3
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "B:/HardDrive_Documents/School/University_of_Washington_Bothell/UWB_Classes/UWB_2020-2021/UWB_Summer_2021/CSS343/Assignments/Assignment3/CSS343A3/assignment3/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/olive/Documents/GitHub/CSS343A3/assignment3/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

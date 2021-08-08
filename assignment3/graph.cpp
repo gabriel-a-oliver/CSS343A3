@@ -222,8 +222,8 @@ void Graph::depthFirstTraversalHelper(Vertex* startVertex,
 }
 
 /** helper for breadthFirstTraversal */
-void Graph::breadthFirstTraversalHelper(Vertex*startVertex,
-                                        void visit(const std::string&)) {}
+/*void Graph::breadthFirstTraversalHelper(Vertex*startVertex,
+                                        void visit(const std::string&)) {}*/
 
 /** mark all verticies as unvisited */
 void Graph::unvisitVertices() {
