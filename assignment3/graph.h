@@ -2,7 +2,7 @@
  * A graph is made up of vertices and edges
  * A vertex can be connected to other vertices via weighted, directed edge
  */
-
+#pragma once
 #ifndef GRAPH_H
 #define GRAPH_H
 
@@ -90,7 +90,7 @@ class Graph {
                                    void visit(const std::string&));
 
     /** helper for breadthFirstTraversal */
-    void breadthFirstTraversalHelper(Vertex*startVertex,
+    void breadthFirstTraversalHelper(Vertex* startVertex,
                                      void visit(const std::string&));
 
     /** mark all verticies as unvisited */

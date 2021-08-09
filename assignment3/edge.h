@@ -3,7 +3,7 @@
  * Each edge has a weight, possibly 0
  * Edge is a simple container class, no interesting functions
  */
-
+#pragma once
 #ifndef EDGE_H
 #define EDGE_H
 

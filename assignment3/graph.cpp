@@ -1,3 +1,4 @@
+#pragma once
 #include <queue>
 #include <climits>
 #include <set>
@@ -38,9 +39,7 @@ Graph::~Graph() {
 int Graph::getNumVertices() const { return vertices.size(); }
 
 /** return number of edges */
-int Graph::getNumEdges() const {
-	return numberOfEdges;
-}
+int Graph::getNumEdges() const { return numberOfEdges; }
 
 /** add a new edge between start and end vertex
     if the vertices do not exist, create them
