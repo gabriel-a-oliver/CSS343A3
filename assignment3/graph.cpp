@@ -5,6 +5,7 @@
 #include <fstream>
 #include <map>
 #include <list>
+#include <vector>
 
 #include "graph.h"
 
@@ -193,6 +194,28 @@ void Graph::djikstraCostToAllVertices(
     std::map<std::string, int>& weight,
     std::map<std::string, std::string>& previous) {
 
+	list<Vertex*> vertList;
+	list<Vertex*> visitedVertList;
+	auto comparison = [&](std::string firstLabel, std::string secondLabel) {
+		return weight[firstLabel] > weight[secondLabel];
+	};
+	std::priority_queue<string, std::vector<string>, decltype(comparison)>
+			orderedVerticesPQueue(comparison);
+
+	for (pair<string, Vertex*> pair : *vertices) {
+		vertList.push_back(pair.second);
+	}
+
+	for (int i = 0; i < vertList.size(); i++) {
+
+	}
+
+
+	vertList.clear();
+	visitedVertList.clear();
+	while (!orderedVerticesPQueue.empty()) {
+		orderedVerticesPQueue.pop();
+	}
 }
 
 /** helper for depthFirstTraversal */
