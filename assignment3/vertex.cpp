@@ -1,4 +1,3 @@
-#pragma once
 #include <climits>
 
 #include "vertex.h"
