@@ -1,4 +1,3 @@
-#pragma once
 #include <string>
 
 #include "edge.h"
@@ -14,7 +13,7 @@ Edge::Edge() {}
 /** constructor with label and weight */
 Edge::Edge(const std::string& end, int weight) {
   this->endVertex = end;
-	this->edgeWeight = weight;
+  this->edgeWeight = weight;
 }
 
 /** return the vertex this edge connects to */
