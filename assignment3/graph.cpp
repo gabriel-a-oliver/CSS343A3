@@ -21,6 +21,7 @@
 /** constructor, empty graph */
 Graph::Graph() {
 	vertices = new map<std::string, Vertex*>();
+
 }
 
 /** destructor, delete all vertices and edges
@@ -82,10 +83,10 @@ int Graph::getEdgeWeight(std::string start, std::string end) const {
     each edge line is in the form of "string string int"
     fromVertex  toVertex    edgeWeight */
 void Graph::readFile(std::string filename) {
-	delete map;
-	map = new Map<std::string, Vertex*>;
 	delete vertices;
-	vertices = new List<Vertex*>();
+	vertices = new Map<std::string, Vertex*>;
+	delete vertices;
+	verticesList = new List<Vertex*>();
 	visitedVertList.clear();
 	// Before reading file, clear all previous information !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -111,7 +112,7 @@ void Graph::depthFirstTraversal(std::string startLabel,
 	unvisitVertices();
 	visitedVertList.clear();
 	delete visitedVertList;
-	visitedVertList = new list<Vertices>;
+	visitedVertList = new list<Vertex*>;
 	Vertex* startingVertex = findVertex();
 
 	depthFirstTraversalHelper(startingVertex, visit)

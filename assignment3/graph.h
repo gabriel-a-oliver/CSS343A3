@@ -90,8 +90,8 @@ class Graph {
                                    void visit(const std::string&));
 
     /** helper for breadthFirstTraversal */
-    void breadthFirstTraversalHelper(Vertex* startVertex,
-                                     void visit(const std::string&));
+    /*void breadthFirstTraversalHelper(Vertex* startVertex,
+                                     void visit(const std::string&));*/
 
     /** mark all verticies as unvisited */
     void unvisitVertices();

@@ -40,10 +40,6 @@ vertex.h
 edge.h
 /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/edge.h
 
-/mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/vertex.cpp
-climits
--
-vertex.h
 /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/vertex.h
 functional
 -
@@ -53,16 +49,4 @@ string
 -
 edge.h
 /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/edge.h
-
-/mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/vertex.h
-climits
--
-vertex.cpp
-/mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/vertex.cpp
-functional
--
-map
--
-string
--
 
