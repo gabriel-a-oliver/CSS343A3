@@ -104,7 +104,7 @@ class Graph {
 
     // Gabriel Code
     int numOfEdges;
-    std::list<Vertex*> verticesList;
+    std::list<Vertex*> verticesList; // Make these lists not global. just in the scope of the functions
     std::list<Vertex*> visitedVertList;
     std::queue<Vertex*> bfsQueue;
 

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <map>
+#include <list>
 
 #include "graph.h"
 
@@ -70,13 +71,13 @@ bool Graph::add(std::string start, std::string end, int edgeWeight) {
 /** return weight of the edge between start and end
     returns INT_MAX if not connected or vertices don't exist */
 int Graph::getEdgeWeight(std::string start, std::string end) const {
-	Vertex* startVert = map.find(start);
-	Vertex* endVert = map.find(endVert);
+	Vertex* startVert = vertices->find(start)->second;
+	Vertex* endVert = vertices->find(end)->second;
 	bool compatible = verticesEdgePairCompatible(start, end);
 	if (!compatible) {
 		return INT_MAX;
 	}
-	return startVert.getEdgeWeight(endVert);
+	return startVert->getEdgeWeight(vertices->find(end)->first);
 }
 
 /** read edges from file
@@ -85,9 +86,9 @@ int Graph::getEdgeWeight(std::string start, std::string end) const {
     fromVertex  toVertex    edgeWeight */
 void Graph::readFile(std::string filename) {
 	delete vertices;
-	vertices = new Map<std::string, Vertex*>;
-	delete vertices;
-	verticesList = new List<Vertex*>();
+	vertices = new map<std::string, Vertex*>;
+	delete verticesList;
+	verticesList = new list<Vertex*>();
 	visitedVertList.clear();
 	// Before reading file, clear all previous information !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
