@@ -110,6 +110,12 @@ class Graph {
     //std::queue<Vertex*> bfsQueue;
 
     bool verticesEdgePairCompatible(std::string start, std::string end) const;
+
+	void Graph::djikstraHelper(std::string currLabel,
+							   std::map<std::string, int>& weight,
+							   std::map<std::string, std::string>& previous,
+							   std::list<Vertex*> visitedVertList,
+							   int currWeight);
     // End of Gabe Code
 
 };  // end Graph

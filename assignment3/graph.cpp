@@ -198,7 +198,7 @@ void Graph::djikstraCostToAllVertices(
 	previous.clear();
 
 	vector<Vertex*> vertVector;
-	list<Vertex*> visitedVertList;
+	list<Vertex*> vertList;
 	auto comparison = [&](std::string firstLabel, std::string secondLabel) {
 		return weight[firstLabel] > weight[secondLabel];
 	};
@@ -212,9 +212,14 @@ void Graph::djikstraCostToAllVertices(
 		//orderedVerticesPQueue.push();
 	}
 
+	vertices->find()// PERFORM BFS or DFS to get a list of the only possible vertices to traverse in the helper
+
+	weight.find(startLabel)->second = 0;
+	previous.find(startLabel)->second = nullptr;
+
 	string currLabel = startLabel;
 
-	djikstraHelper(currLabel, weigh, previous);
+	djikstraHelper(currLabel, weight, previous, visitedVertList, 0);
 
 	/* Gabe Psuedocode
 	pick vertex
@@ -236,8 +241,42 @@ void Graph::djikstraCostToAllVertices(
 	}
 }
 
-void Graph::djikstraHelper() {
-	
+void Graph::djikstraHelper(std::string currLabel,
+						   std::map<std::string, int>& weight,
+						   std::map<std::string, std::string>& previous,
+						   list<Vertex*> visitedVertList,
+						   int currWeight) {
+	Vertex* currVert = findVertex(currLabel);
+	if (!currVert->isVisited()) {
+		currVert->visit();
+		visitedVertList.push_back(currVert);
+	}
+
+	for (Vertex* nextNeighbor = findVertex(currVert->getNextNeighbor());
+		 nextNeighbor->getNextNeighbor() != currLabel;
+		 nextNeighbor = findVertex(currVert->getNextNeighbor())) {
+		if (!nextNeighbor->isVisited()) {
+			visitedVertList.push_back(nextNeighbor);
+			nextNeighbor->visit();
+			weight.find(nextNeighbor->getLabel())->second =
+					currVert->getEdgeWeight(nextNeighbor->getLabel())
+					+ currWeight;
+			previous.find(nextNeighbor->getLabel())->second = currLabel;
+		}
+		else {
+			if (currWeight + currVert->getEdgeWeight(nextNeighbor->getLabel()) <
+				weight.find(nextNeighbor->getLabel())->second) {
+				weight.find(nextNeighbor->getLabel())->second = currWeight +
+						currVert->getEdgeWeight(nextNeighbor->getLabel());
+				previous.find(nextNeighbor->getLabel())->second = currLabel;
+
+				djikstraHelper(nextNeighbor->getLabel(), weight, previous,
+							   visitedVertList,
+							   currWeight + currVert->getEdgeWeight(
+							   			nextNeighbor->getLabel()));
+			}
+		}
+	}
 }
 
 /** helper for depthFirstTraversal */
