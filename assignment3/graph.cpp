@@ -194,7 +194,10 @@ void Graph::djikstraCostToAllVertices(
     std::map<std::string, int>& weight,
     std::map<std::string, std::string>& previous) {
 
-	list<Vertex*> vertList;
+	weight.clear();
+	previous.clear();
+
+	vector<Vertex*> vertVector;
 	list<Vertex*> visitedVertList;
 	auto comparison = [&](std::string firstLabel, std::string secondLabel) {
 		return weight[firstLabel] > weight[secondLabel];
@@ -202,20 +205,39 @@ void Graph::djikstraCostToAllVertices(
 	std::priority_queue<string, std::vector<string>, decltype(comparison)>
 			orderedVerticesPQueue(comparison);
 
-	for (pair<string, Vertex*> pair : *vertices) {
-		vertList.push_back(pair.second);
+	for (pair<string, Vertex*> currPair : *vertices) {
+		vertVector.push_back(currPair.second);
+		weight.insert(pair<string, int>(currPair.first, INT_MAX));
+		previous.insert(pair<string, string>(currPair.first, nullptr));
+		//orderedVerticesPQueue.push();
 	}
 
-	for (int i = 0; i < vertList.size(); i++) {
+	string currLabel = startLabel;
 
-	}
+	djikstraHelper(currLabel, weigh, previous);
+
+	/* Gabe Psuedocode
+	pick vertex
+	for each neighbor
+		if unvisited
+	 		add to visitedList with cost + cost of current vert
+		else
+	 		compare costs
+	 		if new cost is cheaper
+	 			update cost
+	 			recurse with curr neighbor
+	*/
 
 
-	vertList.clear();
+	vertVector.clear();
 	visitedVertList.clear();
 	while (!orderedVerticesPQueue.empty()) {
 		orderedVerticesPQueue.pop();
 	}
+}
+
+void Graph::djikstraHelper() {
+	
 }
 
 /** helper for depthFirstTraversal */
