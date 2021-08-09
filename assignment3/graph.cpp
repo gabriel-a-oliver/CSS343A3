@@ -7,6 +7,7 @@
 
 #include "graph.h"
 
+using namespace std;
 /**
  * A graph is made up of vertices and edges
  * A vertex can be connected to other vertices via weighted, directed edge
@@ -20,7 +21,7 @@
 
 /** constructor, empty graph */
 Graph::Graph() {
-	vertices = new std::map<std::string, Vertex*>();
+	vertices = new map<std::string, Vertex*>();
 
 }
 
@@ -36,7 +37,7 @@ Graph::~Graph() {
 }
 
 /** return number of vertices */
-int Graph::getNumVertices() const { return vertices.size(); }
+int Graph::getNumVertices() const { return vertices->size(); }
 
 /** return number of edges */
 int Graph::getNumEdges() const { return numberOfEdges; }
@@ -56,13 +57,13 @@ bool Graph::add(std::string start, std::string end, int edgeWeight) {
 		return false;
 	}
 	// Also make sure there isnt already an edge for this pair!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-	if (vertices.find(start) == map.end()) {
-		vertices.add(start, new Vertex(start));
+	if (vertices->find(start) == vertices->end()) {
+		vertices->add(start, new Vertex(start));
 	}
-	if (vertices.find(end) == map.end()) {
-		vertices.add(end, new Vertex(end));
+	if (vertices->find(end)->second == vertices->end()->second) {
+		vertices->add(end, new Vertex(end));
 	}
-	vertices.find(start).connect(map.find(end), edgeWeight);
+	vertices->find(start)->second->connect(vertices->find(end)->second, edgeWeight);
 	return true;
 }
 
