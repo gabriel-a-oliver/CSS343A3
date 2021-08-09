@@ -63,7 +63,7 @@ bool Graph::add(std::string start, std::string end, int edgeWeight) {
 	if (vertices->find(end)->second == vertices->end()->second) {
 		vertices->insert(pair<string, Vertex*>(end, new Vertex(end)));
 	}
-	vertices->find(start)->second->connect(vertices->find(end)->second, edgeWeight);
+	vertices->find(start)->second->connect(vertices->find(end)->first, edgeWeight);
 	return true;
 }
 
