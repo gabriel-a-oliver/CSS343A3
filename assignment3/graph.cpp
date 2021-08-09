@@ -112,17 +112,15 @@ void Graph::readFile(std::string filename) {
 void Graph::depthFirstTraversal(std::string startLabel,
                                 void visit(const std::string&)) {
 	unvisitVertices();
-	list<Vertex*> vertList;
 	list <Vertex*> visitedVertList;
 	Vertex* startingVertex = findVertex(startLabel);
 
-	depthFirstTraversalHelper(startingVertex, visit, vertList, visitedVertList);
+	depthFirstTraversalHelper(startingVertex, visit, visitedVertList);
 	/*
 		Mark all nodes as unvisited
 		call dfsHelper with startVertex
 	*/
 	unvisitVertices();
-	vertList.clear();
 	visitedVertList.clear();
 }
 
@@ -198,7 +196,6 @@ void Graph::djikstraCostToAllVertices(
 /** helper for depthFirstTraversal */
 void Graph::depthFirstTraversalHelper(Vertex* startVertex,
 									  void visit(const std::string&),
-									  std::list<Vertex*> vertList,
 									  std::list<Vertex*> visitedVertList) {
 	string startVertexLabel = startVertex->getLabel();
 	visit(startVertexLabel);
@@ -208,7 +205,7 @@ void Graph::depthFirstTraversalHelper(Vertex* startVertex,
 	for (Vertex* nextNeighbor = findVertex(startVertex->getNextNeighbor()); nextNeighbor->getLabel() !=
 			startVertexLabel; nextNeighbor = findVertex(startVertex->getNextNeighbor())) {
 		if (!nextNeighbor->isVisited()) {
-			depthFirstTraversalHelper(nextNeighbor, visit);
+			depthFirstTraversalHelper(nextNeighbor, visit, visitedVertList);
 		}
 	}
 

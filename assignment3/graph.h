@@ -88,7 +88,6 @@ class Graph {
     /** helper for depthFirstTraversal */
     void depthFirstTraversalHelper(Vertex* startVertex,
                                    void visit(const std::string&),
-                                   std::list<Vertex*> vertList,
                                    std::list<Vertex*> visitedVertList);
 
     /** helper for breadthFirstTraversal */
