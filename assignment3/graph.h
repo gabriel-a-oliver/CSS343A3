@@ -87,7 +87,9 @@ class Graph {
 
     /** helper for depthFirstTraversal */
     void depthFirstTraversalHelper(Vertex* startVertex,
-                                   void visit(const std::string&));
+                                   void visit(const std::string&),
+                                   std::list<Vertex*> vertList,
+                                   std::list<Vertex*> visitedVertList);
 
     /** helper for breadthFirstTraversal */
     /*void breadthFirstTraversalHelper(Vertex* startVertex,
@@ -104,9 +106,9 @@ class Graph {
 
     // Gabriel Code
     int numOfEdges;
-    std::list<Vertex*> verticesList; // Make these lists not global. just in the scope of the functions
-    std::list<Vertex*> visitedVertList;
-    std::queue<Vertex*> bfsQueue;
+    //std::list<Vertex*> verticesList; // Make these lists not global. just in the scope of the functions
+    //std::list<Vertex*> visitedVertList;
+    //std::queue<Vertex*> bfsQueue;
 
     bool verticesEdgePairCompatible(std::string start, std::string end) const;
     // End of Gabe Code

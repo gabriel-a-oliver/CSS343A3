@@ -87,9 +87,9 @@ int Graph::getEdgeWeight(std::string start, std::string end) const {
 void Graph::readFile(std::string filename) {
 	delete vertices;
 	vertices = new map<std::string, Vertex*>;
-	delete verticesList;
-	verticesList = new list<Vertex*>();
-	visitedVertList.clear();
+	//delete verticesList;
+	//verticesList = new list<Vertex*>();
+	//visitedVertList.clear();
 	// Before reading file, clear all previous information !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 	ofstream graphFile;
@@ -112,21 +112,18 @@ void Graph::readFile(std::string filename) {
 void Graph::depthFirstTraversal(std::string startLabel,
                                 void visit(const std::string&)) {
 	unvisitVertices();
-	visitedVertList.clear();
-	delete visitedVertList;
-	visitedVertList = new list<Vertex*>;
-	Vertex* startingVertex = findVertex();
+	list<Vertex*> vertList;
+	list <Vertex*> visitedVertList;
+	Vertex* startingVertex = findVertex(startLabel);
 
-	depthFirstTraversalHelper(startingVertex, visit)
+	depthFirstTraversalHelper(startingVertex, visit, vertList, visitedVertList);
 	/*
 		Mark all nodes as unvisited
 		call dfsHelper with startVertex
-
-
 	*/
 	unvisitVertices();
+	vertList.clear();
 	visitedVertList.clear();
-	delete visitedVertList;
 }
 
 /** breadth-first traversal starting from startLabel
@@ -200,16 +197,18 @@ void Graph::djikstraCostToAllVertices(
 
 /** helper for depthFirstTraversal */
 void Graph::depthFirstTraversalHelper(Vertex* startVertex,
-                                      void visit(const std::string&)) {
-	string startVertexLabel = startVertex.getLabel();
+									  void visit(const std::string&),
+									  std::list<Vertex*> vertList,
+									  std::list<Vertex*> visitedVertList) {
+	string startVertexLabel = startVertex->getLabel();
 	visit(startVertexLabel);
-	startVertex.visit();
+	startVertex->visit();
 	visitedVertList.push_back(startVertex);
 
-	for (Vertex* nextNeighbor = startVertex.getNextNeighbor(); nextNeighbor !=
-			startVertexLabel; nextNeighbor = startVertex.getNextNeighbor) {
-		if (!nextNeighbor.isVisited()) {
-			depthFirstTraversalHelper(nextNeighbor, visit)
+	for (Vertex* nextNeighbor = findVertex(startVertex->getNextNeighbor()); nextNeighbor->getLabel() !=
+			startVertexLabel; nextNeighbor = findVertex(startVertex->getNextNeighbor())) {
+		if (!nextNeighbor->isVisited()) {
+			depthFirstTraversalHelper(nextNeighbor, visit);
 		}
 	}
 
@@ -228,16 +227,25 @@ void Graph::depthFirstTraversalHelper(Vertex* startVertex,
 
 /** mark all verticies as unvisited */
 void Graph::unvisitVertices() {
-	for (Vertex* vert : visitedVertList) {
-		vert.unvisit();
+	for (pair<string, Vertex*> pair : *vertices) {
+		pair.second->unvisit();
 	}
 }
 
 /** find a vertex, if it does not exist return nullptr */
-Vertex* Graph::findVertex(const std::string& vertexLabel) const { return nullptr; }
+Vertex* Graph::findVertex(const std::string& vertexLabel) const {
+	return vertices->find(vertexLabel)->second;
+}
 
 /** find a vertex, if it does not exist create it and return it */
-Vertex* Graph::findOrCreateVertex(const std::string& vertexLabel) { return nullptr; }
+Vertex* Graph::findOrCreateVertex(const std::string& vertexLabel) {
+	Vertex* result = vertices->find(vertexLabel)->second;
+	if (result == nullptr) {
+		result = new Vertex(vertexLabel);
+		vertices->insert(pair<string, Vertex*>(vertexLabel, result));
+	}
+	return result;
+}
 
 //Gabe code start
 bool Graph::verticesEdgePairCompatible(std::string start, std::string end) const {
