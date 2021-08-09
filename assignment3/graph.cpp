@@ -58,10 +58,10 @@ bool Graph::add(std::string start, std::string end, int edgeWeight) {
 	}
 	// Also make sure there isnt already an edge for this pair!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 	if (vertices->find(start) == vertices->end()) {
-		vertices->add(start, new Vertex(start));
+		vertices->insert(pair<string, Vertex*>(start, new Vertex(start)));
 	}
 	if (vertices->find(end)->second == vertices->end()->second) {
-		vertices->add(end, new Vertex(end));
+		vertices->insert(pair<string, Vertex*>(end, new Vertex(end)));
 	}
 	vertices->find(start)->second->connect(vertices->find(end)->second, edgeWeight);
 	return true;
