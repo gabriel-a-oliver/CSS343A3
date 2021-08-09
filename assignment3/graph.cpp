@@ -129,25 +129,25 @@ void Graph::depthFirstTraversal(std::string startLabel,
 void Graph::breadthFirstTraversal(std::string startLabel,
                                   void visit(const std::string&)) {
 	unvisitVertices();
-	visitedVertList.clear();
-	delete visitedVertList;
-	visitedVertList = new list<Vertices>;
-	Vertex* startingVertex = findVertex();
+	list<Vertex*> visitedVertList;
+	queue<Vertex*> bfsQueue;
 
+	Vertex* startingVertex = findVertex(startLabel);
 	bfsQueue.push(startingVertex);
 
-	visit(startingVertex.getLabel());
-	startingVertex.visit();
+	visit(startingVertex->getLabel());
+	startingVertex->visit();
 	visitedVertList.push_back(startingVertex);
 
 	while (!bfsQueue.empty()) {
-		Vertex* currentVert = bfsQueue.pop();
-		for (Vertex* nextNeighbor = currentVert.getNextNeighbor(); nextNeighbor
-			 != currentVert.getLabel(); nextNeighbor = currentVert.getNextNeighbor) {
-			if (!nextNeighbor.isVisited()) {
-				visit(currentVert.getLabel());
-				currentVert.visit();
-				visitedVertList.push_back();
+		Vertex* currentVert = bfsQueue.front();
+		for (Vertex* nextNeighbor = findVertex(currentVert->getNextNeighbor());
+			 nextNeighbor != currentVert;
+			 nextNeighbor = findVertex(currentVert->getNextNeighbor())) {
+			if (!nextNeighbor->isVisited()) {
+				visit(currentVert->getLabel());
+				currentVert->visit();
+				visitedVertList.push_back(currentVert);
 				bfsQueue.push(nextNeighbor);
 			}
 		}
@@ -168,7 +168,9 @@ void Graph::breadthFirstTraversal(std::string startLabel,
 
 	unvisitVertices();
 	visitedVertList.clear();
-	delete visitedVertList;
+	while (!bfsQueue.empty()) {
+		bfsQueue.pop();
+	}
 }
 
 /** find the lowest cost from startLabel to all vertices that can be reached
@@ -202,8 +204,9 @@ void Graph::depthFirstTraversalHelper(Vertex* startVertex,
 	startVertex->visit();
 	visitedVertList.push_back(startVertex);
 
-	for (Vertex* nextNeighbor = findVertex(startVertex->getNextNeighbor()); nextNeighbor->getLabel() !=
-			startVertexLabel; nextNeighbor = findVertex(startVertex->getNextNeighbor())) {
+	for (Vertex* nextNeighbor = findVertex(startVertex->getNextNeighbor());
+		 nextNeighbor->getLabel() != startVertexLabel;
+		 nextNeighbor = findVertex(startVertex->getNextNeighbor())) {
 		if (!nextNeighbor->isVisited()) {
 			depthFirstTraversalHelper(nextNeighbor, visit, visitedVertList);
 		}
