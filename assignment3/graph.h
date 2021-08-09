@@ -83,7 +83,7 @@ class Graph {
     int numberOfEdges;
 
     /** mapping from vertex label to vertex pointer for quick access */
-    std::map<std::string, Vertex*> vertices;
+    std::map<std::string, Vertex*>* vertices;
 
     /** helper for depthFirstTraversal */
     void depthFirstTraversalHelper(Vertex* startVertex,
@@ -113,4 +113,5 @@ class Graph {
 
 };  // end Graph
 
+#include "graph.cpp"
 #endif  // GRAPH_H

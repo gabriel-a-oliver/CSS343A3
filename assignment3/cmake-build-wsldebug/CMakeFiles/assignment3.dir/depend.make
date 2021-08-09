@@ -4,5 +4,6 @@
 CMakeFiles/assignment3.dir/assignment3.cpp.o: \
  ../assignment3.cpp \
  ../edge.h \
+ ../graph.cpp \
  ../graph.h \
  ../vertex.h

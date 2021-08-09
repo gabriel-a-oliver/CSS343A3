@@ -20,7 +20,7 @@
 
 /** constructor, empty graph */
 Graph::Graph() {
-	vertices = new map<std::string, Vertex*>();
+	vertices = new std::map<std::string, Vertex*>();
 
 }
 
@@ -56,13 +56,13 @@ bool Graph::add(std::string start, std::string end, int edgeWeight) {
 		return false;
 	}
 	// Also make sure there isnt already an edge for this pair!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-	if (map.find(start) == map.end()) {
-		map.add(start, new Vertex(start));
+	if (vertices.find(start) == map.end()) {
+		vertices.add(start, new Vertex(start));
 	}
-	if (map.find(end) == map.end()) {
-		map.add(end, new Vertex(end));
+	if (vertices.find(end) == map.end()) {
+		vertices.add(end, new Vertex(end));
 	}
-	map.find(start).connect(map.find(end), edgeWeight);
+	vertices.find(start).connect(map.find(end), edgeWeight);
 	return true;
 }
 
