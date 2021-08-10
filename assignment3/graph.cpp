@@ -93,18 +93,42 @@ void Graph::readFile(std::string filename) {
 	//visitedVertList.clear();
 	// Before reading file, clear all previous information !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-	ofstream graphFile;
-	graphFile.open("filename");
+	ifstream graphFile;
+	//ofstream graphFile;
+	graphFile.open(filename);
+	if (!graphFile) {
+		cout << "File " << filename << " does not exist." << endl;
+		return;
+	}
+
 	string numOfEdgesStr;
 	getline(graphFile, numOfEdgesStr);
-	numOfEdges = (int)numOfEdgesStr;
+	numOfEdges = std::stoi(numOfEdgesStr);
 
-	for (int i = 0; i < numOfEdges; i++) {
+//help from: https://stackoverflow.com/questions/32898558/c-read-in-input-one-word-at-a-time////////////////////////////////////////////////////////////////////
+	for (int i = 0; i < numOfEdges, i++) {
+		std::vector<std::string> elements;
+
+		std::string connection;
+		getline(graphFile, connection);
+
+		std::istringstream str(connection);
+		std::string element;
+		while (str >> element) {
+			elements.push_back(element);
+		}
+
+		add(elements[0], elements[1], std::stoi(elements[2]));
+	}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+	/*for (int i = 0; i < numOfEdges; i++) {
 		stringstream currentLine;
 		getline(graphFile, currentLine);
 
 		add(currentLine[0], currentLine[1], (int)currentLine[2]);
-	}
+	}*/
 	graphFile.close();
 }
 
