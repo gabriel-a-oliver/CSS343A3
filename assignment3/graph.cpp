@@ -106,7 +106,7 @@ void Graph::readFile(std::string filename) {
 	numOfEdges = std::stoi(numOfEdgesStr);
 
 //help from: https://stackoverflow.com/questions/32898558/c-read-in-input-one-word-at-a-time////////////////////////////////////////////////////////////////////
-	for (int i = 0; i < numOfEdges, i++) {
+	for (int i = 0; i < numOfEdges; i++) {
 		std::vector<std::string> elements;
 
 		std::string connection;
