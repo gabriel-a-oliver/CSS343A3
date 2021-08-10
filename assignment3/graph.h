@@ -114,9 +114,11 @@ class Graph {
 	void Graph::djikstraHelper(std::string currLabel,
 							   std::map<std::string, int>& weight,
 							   std::map<std::string, std::string>& previous,
-							   std::list<Vertex*> visitedVertList,
 							   int currWeight);
-    // End of Gabe Code
+
+	void Graph::djikstraListBuilderHelper(Vertex* currVert, list<Vertex*> vertList);
+
+		// End of Gabe Code
 
 };  // end Graph
 

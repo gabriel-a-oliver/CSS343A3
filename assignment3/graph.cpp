@@ -198,7 +198,6 @@ void Graph::djikstraCostToAllVertices(
 	previous.clear();
 
 	vector<Vertex*> vertVector;
-	list<Vertex*> vertList;
 	auto comparison = [&](std::string firstLabel, std::string secondLabel) {
 		return weight[firstLabel] > weight[secondLabel];
 	};
@@ -212,14 +211,18 @@ void Graph::djikstraCostToAllVertices(
 		//orderedVerticesPQueue.push();
 	}
 
-	vertices->find()// PERFORM BFS or DFS to get a list of the only possible vertices to traverse in the helper
+	unvisitVertices();
+	list<Vertex*> vertList;
+	Vertex* startVertex = findVertex(startLabel);
+	vertList.push_back(startVertex);
+	djikstraListBuilderHelper(startVertex, vertList);
+	unvisitVertices();
 
 	weight.find(startLabel)->second = 0;
 	previous.find(startLabel)->second = nullptr;
 
 	string currLabel = startLabel;
-
-	djikstraHelper(currLabel, weight, previous, visitedVertList, 0);
+	djikstraHelper(currLabel, weight, previous, 0);
 
 	/* Gabe Psuedocode
 	pick vertex
@@ -235,28 +238,41 @@ void Graph::djikstraCostToAllVertices(
 
 
 	vertVector.clear();
-	visitedVertList.clear();
+	vertList.clear();
 	while (!orderedVerticesPQueue.empty()) {
 		orderedVerticesPQueue.pop();
+	}
+}
+
+void Graph::djikstraListBuilderHelper(Vertex* currVert, list<Vertex*> vertList) {
+	for (Vertex* nextNeighbor = currVert; currVert->getNextNeighbor() != currVert->getLabel(); nextNeighbor = findVertex(currVert->getNextNeighbor())) {
+		if (!nextNeighbor->isVisited()) {
+			nextNeighbor->visit();
+			vertList.push_back(nextNeighbor);
+			djikstraListBuilderHelper(nextNeighbor, vertList);
+		}
 	}
 }
 
 void Graph::djikstraHelper(std::string currLabel,
 						   std::map<std::string, int>& weight,
 						   std::map<std::string, std::string>& previous,
-						   list<Vertex*> visitedVertList,
 						   int currWeight) {
+	/*if (vertList.empty()) {
+		return;
+	}*/
+
 	Vertex* currVert = findVertex(currLabel);
 	if (!currVert->isVisited()) {
 		currVert->visit();
-		visitedVertList.push_back(currVert);
+		//vertList.remove(currVert);
 	}
 
 	for (Vertex* nextNeighbor = findVertex(currVert->getNextNeighbor());
 		 nextNeighbor->getNextNeighbor() != currLabel;
 		 nextNeighbor = findVertex(currVert->getNextNeighbor())) {
 		if (!nextNeighbor->isVisited()) {
-			visitedVertList.push_back(nextNeighbor);
+			//vertList.remove(nextNeighbor);
 			nextNeighbor->visit();
 			weight.find(nextNeighbor->getLabel())->second =
 					currVert->getEdgeWeight(nextNeighbor->getLabel())
@@ -269,13 +285,14 @@ void Graph::djikstraHelper(std::string currLabel,
 				weight.find(nextNeighbor->getLabel())->second = currWeight +
 						currVert->getEdgeWeight(nextNeighbor->getLabel());
 				previous.find(nextNeighbor->getLabel())->second = currLabel;
-
-				djikstraHelper(nextNeighbor->getLabel(), weight, previous,
-							   visitedVertList,
-							   currWeight + currVert->getEdgeWeight(
-							   			nextNeighbor->getLabel()));
+			}
+			else {
+				return;
 			}
 		}
+		djikstraHelper(nextNeighbor->getLabel(), weight, previous,
+					   currWeight + currVert->getEdgeWeight(
+						nextNeighbor->getLabel()));
 	}
 }
 
@@ -340,4 +357,4 @@ bool Graph::verticesEdgePairCompatible(std::string start, std::string end) const
 	// Also make sure there isnt already an edge for this pair!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	return true;
 }
-//Gabe code end
+
