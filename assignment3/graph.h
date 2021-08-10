@@ -111,12 +111,12 @@ class Graph {
 
     bool verticesEdgePairCompatible(std::string start, std::string end) const;
 
-	void Graph::djikstraHelper(std::string currLabel,
+	void djikstraHelper(std::string currLabel,
 							   std::map<std::string, int>& weight,
 							   std::map<std::string, std::string>& previous,
 							   int currWeight);
 
-	void Graph::djikstraListBuilderHelper(Vertex* currVert, list<Vertex*> vertList);
+	void djikstraListBuilderHelper(Vertex* currVert, std::list<Vertex*> vertList);
 
 		// End of Gabe Code
 

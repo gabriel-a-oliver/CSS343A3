@@ -24,7 +24,6 @@ using namespace std;
 /** constructor, empty graph */
 Graph::Graph() {
 	vertices = new map<std::string, Vertex*>();
-
 }
 
 /** destructor, delete all vertices and edges
@@ -268,7 +267,7 @@ void Graph::djikstraCostToAllVertices(
 	}
 }
 
-void Graph::djikstraListBuilderHelper(Vertex* currVert, list<Vertex*> vertList) {
+void Graph::djikstraListBuilderHelper(Vertex* currVert, std::list<Vertex*> vertList) {
 	for (Vertex* nextNeighbor = currVert; currVert->getNextNeighbor() != currVert->getLabel(); nextNeighbor = findVertex(currVert->getNextNeighbor())) {
 		if (!nextNeighbor->isVisited()) {
 			nextNeighbor->visit();
