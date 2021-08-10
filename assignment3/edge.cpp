@@ -1,3 +1,7 @@
+#pragma once
+#ifndef EDGE_CPP
+#define EDGE_CPP
+
 #include <string>
 
 #include "edge.h"
@@ -25,3 +29,5 @@ std::string Edge::getEndVertex() const {
 int Edge::getWeight() const { 
   return this->edgeWeight; 
 }
+
+#endif

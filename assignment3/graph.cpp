@@ -87,16 +87,11 @@ int Graph::getEdgeWeight(std::string start, std::string end) const {
 void Graph::readFile(std::string filename) {
 	delete vertices;
 	vertices = new map<std::string, Vertex*>;
-	//delete verticesList;
-	//verticesList = new list<Vertex*>();
-	//visitedVertList.clear();
-	// Before reading file, clear all previous information !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-	ifstream graphFile;
-	//ofstream graphFile;
+	std::ifstream graphFile;
 	graphFile.open(filename);
-	if (!graphFile) {
-		cout << "File " << filename << " does not exist." << endl;
+	if (!(graphFile.is_open())) {
+		cout << "File " << filename << " does not exist. It opened: " << (graphFile.is_open()) << endl;
 		return;
 	}
 
@@ -104,7 +99,7 @@ void Graph::readFile(std::string filename) {
 	getline(graphFile, numOfEdgesStr);
 	numOfEdges = std::stoi(numOfEdgesStr);
 
-//help from: https://stackoverflow.com/questions/32898558/c-read-in-input-one-word-at-a-time////////////////////////////////////////////////////////////////////
+	//help from: https://stackoverflow.com/questions/32898558/c-read-in-input-one-word-at-a-time////////////////////////////////////////////////////////////////////
 	for (int i = 0; i < numOfEdges; i++) {
 		std::vector<std::string> elements;
 

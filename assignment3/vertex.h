@@ -87,4 +87,6 @@ class Vertex {
     std::map<std::string, Edge>::iterator currentNeighbor;
 };
 
+#include "vertex.cpp"
+
 #endif  // VERTEX_H

@@ -20,9 +20,17 @@ vector
 graph.h
 /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/graph.h
 
+/mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/edge.cpp
+string
+-
+edge.h
+/mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/edge.h
+
 /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/edge.h
 string
 -
+edge.cpp
+/mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/edge.cpp
 
 /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/graph.cpp
 queue
@@ -62,6 +70,10 @@ edge.h
 graph.cpp
 /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/graph.cpp
 
+/mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/vertex.cpp
+climits
+-
+vertex.h
 /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/vertex.h
 functional
 -
@@ -71,4 +83,16 @@ string
 -
 edge.h
 /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/edge.h
+
+/mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/vertex.h
+functional
+-
+map
+-
+string
+-
+edge.h
+/mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/edge.h
+vertex.cpp
+/mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/vertex.cpp
 

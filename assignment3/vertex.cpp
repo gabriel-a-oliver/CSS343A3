@@ -1,3 +1,4 @@
+#pragma once
 #include <climits>
 
 #include "vertex.h"
@@ -8,7 +9,7 @@
 #include <string>
 
 #include "edge.h"
-
+using namespace std;
 
 ////////////////////////////////////////////////////////////////////////////////
 // This is 80 characters - Keep all lines under 80 characters                 //
@@ -21,7 +22,7 @@
 Vertex::Vertex(std::string label) {}
 
 /** @return  The label of this vertex. */
-string Vertex::getLabel() const { 
+std::string Vertex::getLabel() const {
     return this->vertexLabel; 
 }
 
@@ -60,7 +61,7 @@ bool Vertex::disconnect(const std::string& endVertex) { return true; }
  @return  The edge weight. This value is zero for an unweighted graph and
     is negative if the .edge does not exist */
 int Vertex::getEdgeWeight(const std::string& endVertex) const { 
-    
+    return -999;
 }
 
 /** Calculates how many neighbors this vertex has.

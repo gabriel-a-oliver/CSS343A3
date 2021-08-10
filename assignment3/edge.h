@@ -31,5 +31,6 @@ class Edge {
     int edgeWeight {0};
 };  //  end Edge
 
+#include "edge.cpp"
 
 #endif  // EDGE_H
