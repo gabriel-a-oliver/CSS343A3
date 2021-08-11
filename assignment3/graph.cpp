@@ -376,7 +376,7 @@ Vertex* Graph::findOrCreateVertex(const std::string& vertexLabel) {
 //Gabe code start
 bool Graph::verticesEdgePairCompatible(std::string start, std::string end) const {
 	if (start.compare(end)) {
-		cout << "The start and end vertices cannot be the same" << endl;
+		cout << "The start and end vertices cannot be the same." << endl;
 		return false;
 	}
 	Vertex* startVert = findVertex(start);
@@ -385,6 +385,7 @@ bool Graph::verticesEdgePairCompatible(std::string start, std::string end) const
 		 nextNeighbor->getLabel() != start;
 		 nextNeighbor = findVertex(nextNeighbor->getNextNeighbor())) {
 		if (nextNeighbor == endVert) {
+			cout << "An edge from " << start << " to " << end << " already exists." << endl;
 			return false;
 		}
 	}
