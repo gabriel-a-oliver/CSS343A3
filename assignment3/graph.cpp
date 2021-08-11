@@ -389,7 +389,6 @@ bool Graph::verticesEdgePairCompatible(std::string start, std::string end) const
 			return false;
 		}
 	}
-	// Also make sure there isnt already an edge for this pair!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	return true;
 }
 
