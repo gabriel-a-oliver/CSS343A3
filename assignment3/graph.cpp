@@ -91,7 +91,7 @@ void Graph::readFile(std::string filename) {
 	std::ifstream graphFile;
 	graphFile.open(filename);
 	if (!(graphFile.is_open())) {
-		cout << "File " << filename << " does not exist. It opened: " << (graphFile.is_open()) << endl;
+		cout << "File " << filename << " cannot be opened." << endl;
 		return;
 	}
 
@@ -99,20 +99,20 @@ void Graph::readFile(std::string filename) {
 	getline(graphFile, numOfEdgesStr);
 	numOfEdges = std::stoi(numOfEdgesStr);
 
-	//help from: https://stackoverflow.com/questions/32898558/c-read-in-input-one-word-at-a-time////////////////////////////////////////////////////////////////////
+	//help from: https://stackoverflow.com/questions/32898558/c-read-in-input-one-word-at-a-time ////////////////////////////////////////////////////////////////////
 	for (int i = 0; i < numOfEdges; i++) {
-		std::vector<std::string> elements;
 
 		std::string connection;
 		getline(graphFile, connection);
 
 		std::istringstream str(connection);
-		std::string element;
-		while (str >> element) {
-			elements.push_back(element);
-		}
+		std::string firstVertStr;
+		std::string endVertStr;
+		std::string weightStr;
 
-		add(elements[0], elements[1], std::stoi(elements[2]));
+		str >> firstVertStr >> endVertStr >> weightStr;
+
+		add(firstVertStr, endVertStr, std::stoi(weightStr));
 	}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -130,6 +130,11 @@ void Graph::readFile(std::string filename) {
     call the function visit on each vertex label */
 void Graph::depthFirstTraversal(std::string startLabel,
                                 void visit(const std::string&)) {
+	if (vertices->empty()) {
+		cout << "Graph is empty." << endl;
+		return;
+	}
+
 	unvisitVertices();
 	list <Vertex*> visitedVertList;
 	Vertex* startingVertex = findVertex(startLabel);
@@ -147,6 +152,11 @@ void Graph::depthFirstTraversal(std::string startLabel,
     call the function visit on each vertex label */
 void Graph::breadthFirstTraversal(std::string startLabel,
                                   void visit(const std::string&)) {
+	if (vertices->empty()) {
+		cout << "Graph is empty." << endl;
+		return;
+	}
+
 	unvisitVertices();
 	list<Vertex*> visitedVertList;
 	queue<Vertex*> bfsQueue;
@@ -391,4 +401,4 @@ bool Graph::verticesEdgePairCompatible(std::string start, std::string end) const
 	}
 	return true;
 }
-
+//Gabe code end
