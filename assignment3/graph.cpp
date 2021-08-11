@@ -53,18 +53,17 @@ bool Graph::add(std::string start, std::string end, int edgeWeight) {
 	if (!compatible) {
 		return false;
 	}
-	/*if (start.compare(end)) {
-		cout << "The start and end vertices cannot be the same" << endl;
-		return false;
-	}
-	// Also make sure there isnt already an edge for this pair!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+	/*
 	if (vertices->find(start) == vertices->end()) {
 		vertices->insert(pair<string, Vertex*>(start, new Vertex(start)));
 	}
 	if (vertices->find(end)->second == vertices->end()->second) {
 		vertices->insert(pair<string, Vertex*>(end, new Vertex(end)));
 	}
-	vertices->find(start)->second->connect(vertices->find(end)->first, edgeWeight);
+	*/
+	vertices->insert(pair<string, Vertex*>(start, new Vertex(start)));
+	vertices->insert(pair<string, Vertex*>(end, new Vertex(end)));
+	findVertex(start)->connect(end, edgeWeight);
 	return true;
 }
 
