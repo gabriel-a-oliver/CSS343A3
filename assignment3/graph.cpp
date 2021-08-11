@@ -170,6 +170,7 @@ void Graph::breadthFirstTraversal(std::string startLabel,
 				bfsQueue.push(nextNeighbor);
 			}
 		}
+		bfsQueue.pop(); // this may call the destructor ??!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	}
 
 	/*
@@ -187,9 +188,6 @@ void Graph::breadthFirstTraversal(std::string startLabel,
 
 	unvisitVertices();
 	visitedVertList.clear();
-	while (!bfsQueue.empty()) {
-		bfsQueue.pop();
-	}
 }
 
 /** find the lowest cost from startLabel to all vertices that can be reached
