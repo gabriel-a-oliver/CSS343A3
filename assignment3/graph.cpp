@@ -219,11 +219,11 @@ void Graph::djikstraCostToAllVertices(
 	previous.clear();
 
 	vector<Vertex*> vertVector;
-	auto comparison = [&](std::string firstLabel, std::string secondLabel) {
+	/*auto comparison = [&](std::string firstLabel, std::string secondLabel) {
 		return weight[firstLabel] > weight[secondLabel];
 	};
 	std::priority_queue<string, std::vector<string>, decltype(comparison)>
-			orderedVerticesPQueue(comparison);
+			orderedVerticesPQueue(comparison);*/
 
 	for (pair<string, Vertex*> currPair : *vertices) {
 		vertVector.push_back(currPair.second);
@@ -233,16 +233,16 @@ void Graph::djikstraCostToAllVertices(
 	}
 
 	unvisitVertices();
-	list<Vertex*> vertList;
+	//list<Vertex*> vertList;
 	Vertex* startVertex = findVertex(startLabel);
-	vertList.push_back(startVertex);
+	//vertList.push_back(startVertex);
 	//djikstraListBuilderHelper(startVertex, vertList);
-	unvisitVertices();
+	//unvisitVertices();
 
 	weight.find(startLabel)->second = 0;
 	previous.find(startLabel)->second = nullptr;
 	startVertex->visit();
-	vertList.push_back(startVertex);
+	//vertList.push_back(startVertex);
 
 	//string currLabel = startLabel;
 	djikstraHelper(startLabel, weight, previous, 0);
@@ -261,10 +261,10 @@ void Graph::djikstraCostToAllVertices(
 
 
 	vertVector.clear();
-	vertList.clear();
-	while (!orderedVerticesPQueue.empty()) {
+	//vertList.clear();
+	/*while (!orderedVerticesPQueue.empty()) {
 		orderedVerticesPQueue.pop();
-	}
+	}*/
 }
 
 void Graph::djikstraListBuilderHelper(Vertex* currVert, std::list<Vertex*> vertList) {
