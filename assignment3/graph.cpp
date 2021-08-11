@@ -210,6 +210,11 @@ void Graph::djikstraCostToAllVertices(
     std::map<std::string, int>& weight,
     std::map<std::string, std::string>& previous) {
 
+	if (vertices->empty()){
+		cout << "Graph is Empty" << endl;
+		return;
+	}
+
 	weight.clear();
 	previous.clear();
 
@@ -231,14 +236,16 @@ void Graph::djikstraCostToAllVertices(
 	list<Vertex*> vertList;
 	Vertex* startVertex = findVertex(startLabel);
 	vertList.push_back(startVertex);
-	djikstraListBuilderHelper(startVertex, vertList);
+	//djikstraListBuilderHelper(startVertex, vertList);
 	unvisitVertices();
 
 	weight.find(startLabel)->second = 0;
 	previous.find(startLabel)->second = nullptr;
+	startVertex->visit();
+	vertList.push_back(startVertex);
 
-	string currLabel = startLabel;
-	djikstraHelper(currLabel, weight, previous, 0);
+	//string currLabel = startLabel;
+	djikstraHelper(startLabel, weight, previous, 0);
 
 	/* Gabe Psuedocode
 	pick vertex
@@ -279,10 +286,10 @@ void Graph::djikstraHelper(std::string currLabel,
 	}*/
 
 	Vertex* currVert = findVertex(currLabel);
-	if (!currVert->isVisited()) {
+	/*if (!currVert->isVisited()) {
 		currVert->visit();
 		//vertList.remove(currVert);
-	}
+	}*/
 
 	for (Vertex* nextNeighbor = findVertex(currVert->getNextNeighbor());
 		 nextNeighbor->getNextNeighbor() != currLabel;
@@ -296,13 +303,14 @@ void Graph::djikstraHelper(std::string currLabel,
 			previous.find(nextNeighbor->getLabel())->second = currLabel;
 		}
 		else {
-			if (currWeight + currVert->getEdgeWeight(nextNeighbor->getLabel()) <
-				weight.find(nextNeighbor->getLabel())->second) {
+			if (currWeight + currVert->getEdgeWeight(nextNeighbor->getLabel())
+					<= weight.find(nextNeighbor->getLabel())->second) {
 				weight.find(nextNeighbor->getLabel())->second = currWeight +
-						currVert->getEdgeWeight(nextNeighbor->getLabel());
+							currVert->getEdgeWeight(nextNeighbor->getLabel());
 				previous.find(nextNeighbor->getLabel())->second = currLabel;
 			}
 			else {
+				// need to check if there are other neighbors !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				return;
 			}
 		}
