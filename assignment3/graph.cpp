@@ -310,7 +310,6 @@ void Graph::djikstraHelper(std::string currLabel,
 				previous.find(nextNeighbor->getLabel())->second = currLabel;
 			}
 			else {
-				// need to check if there are other neighbors !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				if (nextNeighbor->getNextNeighbor() == currLabel) {
 					return;
 				}
