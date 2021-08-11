@@ -311,7 +311,9 @@ void Graph::djikstraHelper(std::string currLabel,
 			}
 			else {
 				// need to check if there are other neighbors !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-				return;
+				if (nextNeighbor->getNextNeighbor() == currLabel) {
+					return;
+				}
 			}
 		}
 		djikstraHelper(nextNeighbor->getLabel(), weight, previous,
