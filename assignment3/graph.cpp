@@ -379,6 +379,15 @@ bool Graph::verticesEdgePairCompatible(std::string start, std::string end) const
 		cout << "The start and end vertices cannot be the same" << endl;
 		return false;
 	}
+	Vertex* startVert = findVertex(start);
+	Vertex* endVert = findVertex(end);
+	for (Vertex* nextNeighbor = startVert;
+		 nextNeighbor->getLabel() != start;
+		 nextNeighbor = findVertex(nextNeighbor->getNextNeighbor())) {
+		if (nextNeighbor == endVert) {
+			return false;
+		}
+	}
 	// Also make sure there isnt already an edge for this pair!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	return true;
 }
