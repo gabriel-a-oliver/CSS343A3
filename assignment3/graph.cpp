@@ -70,13 +70,21 @@ bool Graph::add(std::string start, std::string end, int edgeWeight) {
 /** return weight of the edge between start and end
     returns INT_MAX if not connected or vertices don't exist */
 int Graph::getEdgeWeight(std::string start, std::string end) const {
-	Vertex* startVert = vertices->find(start)->second;
-	Vertex* endVert = vertices->find(end)->second;
-	bool compatible = verticesEdgePairCompatible(start, end);
-	if (!compatible) {
-		return INT_MAX;
+	Vertex* startVert = findVertex(start);
+	Vertex* endVert = findVertex(end);
+	if (start.compare(end)) {
+		cout << start << " is the same as " << end << "." << endl;
+		return 0;
 	}
-	return startVert->getEdgeWeight(vertices->find(end)->first);
+	for (Vertex* nextNeighbor = startVert;
+	nextNeighbor->getLabel() != start;
+	nextNeighbor = findVertex(nextNeighbor->getNextNeighbor())) {
+		if (nextNeighbor == endVert) {
+			return startVert->getEdgeWeight((end));
+		}
+	}
+	cout << "There is no connection starting from " << start << " and ending at " << end << "." << endl;
+	return INT_MAX;
 }
 
 /** read edges from file
@@ -387,6 +395,9 @@ bool Graph::verticesEdgePairCompatible(std::string start, std::string end) const
 	if (start.compare(end)) {
 		cout << "The start and end vertices cannot be the same." << endl;
 		return false;
+	}
+	if (!vertices->empty()) {
+		return true;
 	}
 	Vertex* startVert = findVertex(start);
 	Vertex* endVert = findVertex(end);
