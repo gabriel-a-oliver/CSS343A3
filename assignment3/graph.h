@@ -103,11 +103,6 @@ class Graph {
     /** find a vertex, if it does not exist create it and return it */
     Vertex* findOrCreateVertex(const std::string& vertexLabel);
 
-    // Gabriel Code
-    int numOfEdges;
-    //std::list<Vertex*> verticesList; // Make these lists not global. just in the scope of the functions
-    //std::list<Vertex*> visitedVertList;
-    //std::queue<Vertex*> bfsQueue;
 
     bool verticesEdgePairCompatible(std::string start, std::string end) const;
 
@@ -118,7 +113,6 @@ class Graph {
 
 	void djikstraListBuilderHelper(Vertex* currVert, std::list<Vertex*> vertList);
 
-		// End of Gabe Code
 
 };  // end Graph
 
