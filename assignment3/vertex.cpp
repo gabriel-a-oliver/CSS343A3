@@ -22,7 +22,12 @@ using namespace std;
 /** Creates an unvisited vertex, gives it a label, and clears its
     adjacency list.
     NOTE: A vertex must have a unique label that cannot be changed. */
-Vertex::Vertex(std::string label) {}
+Vertex::Vertex(std::string label) {
+    this->vertexLabel = label;
+    this->visited = false;
+    adjacencyList.clear();
+
+}
 
 /** @return  The label of this vertex. */
 string Vertex::getLabel() const { 
@@ -68,25 +73,49 @@ bool Vertex::connect(const string& endVertex, const int edgeWeight) {
 
 /** Removes the edge between this vertex and the given one.
 @return  True if the removal is successful. */
-bool Vertex::disconnect(const std::string& endVertex) { return true; }
+bool Vertex::disconnect(const std::string& endVertex) { 
+    //first check endvert != this vertex
+    //run thru , iterate, grab edge, delete
+    if (this->vertexLabel != endVertex) { //edge case: same edge to edge
+        map<std::string, Edge>::iterator it;
+        for (it = adjacencyList.begin(); it != adjacencyList.end(); it++) {
+            string labelTemp = it->first;
+            Edge eTemp = it->second;
+            if (labelTemp == endVertex) {
+                adjacencyList.erase(labelTemp);
+                return true;
+            }
+        }
+        return false; //can't find vertex
+    }
+    else {
+        return false;
+    }
+    //remove the element
+}
 
 /** Gets the weight of the edge between this vertex and the given vertex.
  @return  The edge weight. This value is zero for an unweighted graph and
     is negative if the .edge does not exist */
-int Vertex::getEdgeWeight(const std::string& endVertex) const { 
+int Vertex::getEdgeWeight(const std::string& endVertex)  { 
     //say this = D, end = F, get weight of 10
     //itreate!
+    /*if (endVertex == this->vertexLabel) {
+        return -1;
+    }*/
+
     map<std::string, Edge>::iterator it;
     for (it = adjacencyList.begin(); it != adjacencyList.end(); it++) {
         if (it->second.getEndVertex() == endVertex) {
             return it->second.getWeight();
         }
     }
+    return -1; //edge cannot be found
 }
 
 /** Calculates how many neighbors this vertex has.
  @return  The number of the vertex's neighbors. */
-int Vertex::getNumberOfNeighbors() const { 
+int Vertex::getNumberOfNeighbors() { 
     //iterate thru list, create vector of neighbors
     //everytime you see a element with this->vertexLabel as its starting vertex,
     //pushback it's second.endVert into the vector
@@ -95,7 +124,7 @@ int Vertex::getNumberOfNeighbors() const {
     set<string> distinctVerts;
     map<std::string, Edge>::iterator it;
     for (it = adjacencyList.begin(); it != adjacencyList.end(); it++) {
-        if (it->first.compare(this->vertexLabel)) {
+        if (it->first.compare(this->vertexLabel) == 0) {
             distinctVerts.insert(it->second.getEndVertex()); //gathers up distinct neighbors
         }
     }
