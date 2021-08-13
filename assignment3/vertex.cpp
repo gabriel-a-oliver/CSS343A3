@@ -123,8 +123,9 @@ int Vertex::getNumberOfNeighbors() {
     //OR, USE A SET!!!! DOESN'T ALLOW DUPES ANYWAY
     set<string> distinctVerts;
     map<std::string, Edge>::iterator it;
+    //maybe have a check to see if adjlist is empty or not here?
     for (it = adjacencyList.begin(); it != adjacencyList.end(); it++) {
-        if (it->first.compare(this->vertexLabel) == 0) {
+        if (it->first.compare(this->getLabel()) == 0) {
             distinctVerts.insert(it->second.getEndVertex()); //gathers up distinct neighbors
         }
     }
@@ -135,13 +136,24 @@ int Vertex::getNumberOfNeighbors() {
 /** Sets current neighbor to first in adjacency list. */
 void Vertex::resetNeighbor() {
     //currNeighbor = adjlist.begin
+    currentNeighbor = adjacencyList.begin();
 }
 
 /** Gets this vertex's next neighbor in the adjacency list.
     Neighbors are automatically sorted alphabetically via map
     Returns the vertex label if there are no more neighbors
  @return  The label of the vertex's next neighbor. */
-std::string Vertex::getNextNeighbor() { return "XXX"; }
+std::string Vertex::getNextNeighbor() { 
+    resetNeighbor();
+    if (currentNeighbor != adjacencyList.end()) {
+        currentNeighbor++;
+        string currLbl = currentNeighbor->first;
+        return currLbl;
+    }
+    else {
+        return this->getLabel();
+    }
+}
 
 /** Sees whether this vertex is equal to another one.
     Two vertices are equal if they have the same label. */
