@@ -57,7 +57,7 @@ bool Vertex::isVisited() const {
  @return  True if the connection is successful. */
 bool Vertex::connect(const string& endVertex, const int edgeWeight) { 
     Edge e(endVertex, edgeWeight);
-    adjacencyList.emplace(this->vertexLabel, e);
+    adjacencyList.emplace(endVertex, e); // before was emplace(this->vertexLabel, e)
     //iterate w/iterator, check if this vertexlbl.second
     //maybe put this up top?
     map<std::string, Edge>::iterator it;

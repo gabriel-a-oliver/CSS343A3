@@ -310,6 +310,9 @@ bool Graph::verticesEdgePairCompatible(std::string start,
 	}
 	Vertex* startVert = findVertex(start);
 	Vertex* endVert = findVertex(end);
+	if (startVert == nullptr || endVert == nullptr) {
+		return true;
+	}
 	for (Vertex* nextNeighbor = startVert;
 		 nextNeighbor->getLabel() != start;
 		 nextNeighbor = findVertex(nextNeighbor->getNextNeighbor())) {
