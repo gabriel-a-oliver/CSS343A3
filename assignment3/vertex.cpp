@@ -126,7 +126,8 @@ int Vertex::getNumberOfNeighbors() {
     //maybe have a check to see if adjlist is empty or not here?
     for (it = adjacencyList.begin(); it != adjacencyList.end(); it++) {
         if (it->first.compare(this->getLabel()) == 0) {
-            distinctVerts.insert(it->second.getEndVertex()); //gathers up distinct neighbors
+        	//gathers up distinct neighbors
+            distinctVerts.insert(it->second.getEndVertex());
         }
     }
 
