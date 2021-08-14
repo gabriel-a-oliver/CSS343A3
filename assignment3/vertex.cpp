@@ -147,8 +147,9 @@ void Vertex::resetNeighbor() {
 std::string Vertex::getNextNeighbor() { 
     //resetNeighbor(); // before was uncommented
     if (currentNeighbor != adjacencyList.end()) {
-        currentNeighbor++;
+        //currentNeighbor++; //--had this up here earlier
         string currLbl = currentNeighbor->first;
+	currentNeighbor++;
         return currLbl;
     }
     else {
