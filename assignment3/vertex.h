@@ -54,7 +54,7 @@ class Vertex {
 
     /** Calculates how many neighbors this vertex has.
      @return  The number of the vertex's neighbors. */
-    int getNumberOfNeighbors() const;
+    int getNumberOfNeighbors();
 
     /** Sets current neighbor to first in adjacency list. */
     void resetNeighbor();
