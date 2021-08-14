@@ -50,7 +50,7 @@ class Vertex {
     /** Gets the weight of the edge between this vertex and the given vertex.
      @return  The edge weight. This value is zero for an unweighted graph and
         is negative if the .edge does not exist */
-    int getEdgeWeight(const std::string& endVertex) const;
+    int getEdgeWeight(const std::string& endVertex);
 
     /** Calculates how many neighbors this vertex has.
      @return  The number of the vertex's neighbors. */
