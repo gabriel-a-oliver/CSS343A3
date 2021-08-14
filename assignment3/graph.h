@@ -111,9 +111,6 @@ class Graph {
 							   std::map<std::string, std::string>& previous,
 							   int currWeight);
 
-	void djikstraListBuilderHelper(Vertex* currVert, std::list<Vertex*> vertList);
-
-
 };  // end Graph
 
 #include "graph.cpp"

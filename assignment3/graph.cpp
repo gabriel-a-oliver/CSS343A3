@@ -218,19 +218,6 @@ void Graph::djikstraCostToAllVertices(
 	vertVector.clear();
 }
 
-void Graph::djikstraListBuilderHelper(Vertex* currVert,
-									  std::list<Vertex*> vertList) {
-	for (Vertex* nextNeighbor = currVert;
-			currVert->getNextNeighbor() != currVert->getLabel();
-			nextNeighbor = findVertex(currVert->getNextNeighbor())) {
-		if (!nextNeighbor->isVisited()) {
-			nextNeighbor->visit();
-			vertList.push_back(nextNeighbor);
-			djikstraListBuilderHelper(nextNeighbor, vertList);
-		}
-	}
-}
-
 void Graph::djikstraHelper(std::string currLabel,
 						   std::map<std::string, int>& weight,
 						   std::map<std::string, std::string>& previous,
