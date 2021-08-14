@@ -261,10 +261,11 @@ void Graph::depthFirstTraversalHelper(Vertex* startVertex,
 	visit(startVertexLabel);
 	startVertex->visit();
 	visitedVertList.push_back(startVertex);
-
-	for (Vertex* nextNeighbor = findVertex(startVertex->getNextNeighbor());
+	startVertex->resetNeighbor();
+	// need to use a neighbor iterator /////////////////////////////////////////////////////////////////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	for (Vertex* nextNeighbor = findVertex(startVertex->getCurrentNeighbor());
 		 nextNeighbor->getLabel() != startVertexLabel;
-		 nextNeighbor = findVertex(startVertex->getNextNeighbor())) {
+		 nextNeighbor = findVertex(startVertex->getNextNeighbor())) /*this is causing issues*/{ ////////////////////////////////////////////////////!!!!!!!
 		if (!nextNeighbor->isVisited()) {
 			depthFirstTraversalHelper(nextNeighbor, visit, visitedVertList);
 		}

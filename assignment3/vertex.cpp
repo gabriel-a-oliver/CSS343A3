@@ -145,7 +145,7 @@ void Vertex::resetNeighbor() {
     Returns the vertex label if there are no more neighbors
  @return  The label of the vertex's next neighbor. */
 std::string Vertex::getNextNeighbor() { 
-    resetNeighbor();
+    //resetNeighbor(); // before was uncommented
     if (currentNeighbor != adjacencyList.end()) {
         currentNeighbor++;
         string currLbl = currentNeighbor->first;
@@ -172,3 +172,12 @@ bool Vertex::operator<(const Vertex& rightHandItem) const {
     return lhsLabel.compare(rhsLabel) < 0;
 }
 
+std::string Vertex::getCurrentNeighbor() {
+	if (currentNeighbor != adjacencyList.end()) {
+		string currLbl = currentNeighbor->first;
+		return currLbl;
+	}
+	else {
+		return this->getLabel();
+	}
+}
