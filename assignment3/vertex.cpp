@@ -2,7 +2,7 @@
 
 #include "vertex.h"
 
-
+#include <iostream>
 #include <functional>
 #include <map>
 #include <iterator>
