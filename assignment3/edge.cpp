@@ -13,7 +13,11 @@
 
 // the initializers in edge.h mean that we don't need to do anything in the
 // default constr
-Edge::Edge() {}
+Edge::Edge() {
+  this->endVertex = "";
+  this->edgeWeight = 0; //just in case
+  
+}
 
 /** constructor with label and weight */
 Edge::Edge(const std::string& end, int weight) {
