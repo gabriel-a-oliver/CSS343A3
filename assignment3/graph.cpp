@@ -305,7 +305,7 @@ bool Graph::verticesEdgePairCompatible(std::string start,
 		cout << "The start and end vertices cannot be the same." << endl;
 		return false;
 	}
-	if (!vertices->empty()) {
+	if (vertices->empty()) {
 		return true;
 	}
 	Vertex* startVert = findVertex(start);
