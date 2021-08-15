@@ -92,7 +92,7 @@ void graphCostDisplay() {
 }
 
 void testGraph0() {
-    cout << "testGraph0" << endl;
+    cout << endl << "testGraph0" << endl;
     Graph g;
     g.readFile("graph0.txt");
     cout << isOK(g.getNumVertices(), 3) << "3 vertices" << endl;
@@ -113,7 +113,7 @@ void testGraph0() {
 }
 
 void testGraph1() {
-    cout << "testGraph1" << endl;
+    cout << endl << "testGraph1" << endl;
     Graph g;
     g.readFile("graph1.txt");
     cout << isOK(g.getNumVertices(), 10) << "10 vertices" << endl;
@@ -139,7 +139,8 @@ void testGraph1() {
 }
 
 void testGraph2() {
-    Graph g;
+	cout << endl << "testGraph2" << endl;
+	Graph g;
 
     g.readFile("graph2.txt");
     cout << isOK(g.getNumVertices(), 21) << "21 vertices" << endl;

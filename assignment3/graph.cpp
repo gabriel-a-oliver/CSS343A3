@@ -233,7 +233,7 @@ void Graph::djikstraHelper(std::string currLabel,
 	Vertex* currVert = findVertex(currLabel);
 
 	for (Vertex* nextNeighbor = findVertex(currVert->getNextNeighbor());
-		 nextNeighbor->getCurrentNeighbor() != currLabel;
+		 nextNeighbor->getLabel() != currLabel;
 		 nextNeighbor = findVertex(currVert->getNextNeighbor())) {
 		if (!nextNeighbor->isVisited()) {
 			nextNeighbor->visit();
@@ -250,8 +250,11 @@ void Graph::djikstraHelper(std::string currLabel,
 				previous.find(nextNeighbor->getLabel())->second = currLabel;
 			}
 			else {
-				if (nextNeighbor->getNextNeighbor() == currLabel) {
+				if (currVert->getCurrentNeighbor() == currLabel) {
 					return;
+				} else {
+					continue;
+					//nextNeighbor = findVertex(currVert->getNextNeighbor());
 				}
 			}
 		}
