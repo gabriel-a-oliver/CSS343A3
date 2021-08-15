@@ -151,21 +151,28 @@ void Graph::breadthFirstTraversal(std::string startLabel,
 	queue<Vertex*> bfsQueue;
 
 	Vertex* startingVertex = findVertex(startLabel);
-	bfsQueue.push(startingVertex);
+	startingVertex->resetNeighbor();
 
-	visit(startingVertex->getLabel());
-	startingVertex->visit();
-	visitedVertList.push_back(startingVertex);
+	bfsQueue.push(startingVertex);
+	//visit(startLabel);
+	//startingVertex->visit();
+
+	//visitedVertList.push_back(startingVertex);
 
 	while (!bfsQueue.empty()) {
 		Vertex* currentVert = bfsQueue.front();
-		for (Vertex* nextNeighbor = findVertex(currentVert->getNextNeighbor());
+		if (!currentVert->isVisited()) {
+			visit(currentVert->getLabel());
+			currentVert->visit();
+			visitedVertList.push_back(currentVert);
+		}
+		for (Vertex* nextNeighbor = findVertex(currentVert->getCurrentNeighbor());
 			 nextNeighbor != currentVert;
 			 nextNeighbor = findVertex(currentVert->getNextNeighbor())) {
 			if (!nextNeighbor->isVisited()) {
-				visit(currentVert->getLabel());
-				currentVert->visit();
-				visitedVertList.push_back(currentVert);
+				visit(nextNeighbor->getLabel());
+				nextNeighbor->visit();
+				visitedVertList.push_back(nextNeighbor);
 				bfsQueue.push(nextNeighbor);
 			}
 		}
