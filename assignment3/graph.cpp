@@ -214,15 +214,17 @@ void Graph::djikstraCostToAllVertices(
 	vector<Vertex*> vertVector;
 
 	for (pair<string, Vertex*> currPair : *vertices) {
-		vertVector.push_back(currPair.second);
-		weight.insert(pair<string, int>(currPair.first, INT_MAX));
-		previous.insert(pair<string, string>(currPair.first, ""));
+		if (currPair.first != startLabel) {
+			vertVector.push_back(currPair.second);
+			weight.insert(pair<string, int>(currPair.first, INT_MAX));
+			previous.insert(pair<string, string>(currPair.first, ""));
+		}
 	}
 
 	Vertex* startVertex = findVertex(startLabel);
 
-	weight.find(startLabel)->second = 0;
-	previous.find(startLabel)->second = "";
+	//weight.find(startLabel)->second = 0;
+	//previous.find(startLabel)->second = "";
 	startVertex->visit();
 
 	djikstraHelper(startLabel, weight, previous, 0);
