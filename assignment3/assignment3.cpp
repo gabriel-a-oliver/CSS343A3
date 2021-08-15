@@ -106,6 +106,7 @@ void testGraph0() {
     g.breadthFirstTraversal("A", graphVisitor);
     cout << isOK(graphOut.str(), "A B C "s) << "BFS" << endl;
 
+    cout << "Performing djikstra function" << endl;
     g.djikstraCostToAllVertices("A", weight, previous);
     graphCostDisplay();
     cout << isOK(graphOut.str(), "B(1) C(4) via [B] "s)

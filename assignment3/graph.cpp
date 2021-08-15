@@ -210,7 +210,7 @@ void Graph::djikstraCostToAllVertices(
 	for (pair<string, Vertex*> currPair : *vertices) {
 		vertVector.push_back(currPair.second);
 		weight.insert(pair<string, int>(currPair.first, INT_MAX));
-		previous.insert(pair<string, string>(currPair.first, nullptr));
+		previous.insert(pair<string, string>(currPair.first, ""));
 	}
 
 	unvisitVertices();
