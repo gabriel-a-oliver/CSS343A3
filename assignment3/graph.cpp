@@ -237,12 +237,12 @@ void Graph::djikstraHelper(std::string currLabel,
 		 nextNeighbor = findVertex(currVert->getNextNeighbor())) {
 		if (!nextNeighbor->isVisited()) {
 			nextNeighbor->visit();
-			weight.find(nextNeighbor->getLabel())->second =
-					currVert->getEdgeWeight(nextNeighbor->getLabel())
-					+ currWeight;
+			weight.find(nextNeighbor->getLabel())->second = currWeight +
+					currVert->getEdgeWeight(nextNeighbor->getLabel());
 			previous.find(nextNeighbor->getLabel())->second = currLabel;
 		}
 		else {
+			nextNeighbor->resetNeighbor();
 			if (currWeight + currVert->getEdgeWeight(nextNeighbor->getLabel())
 					< weight.find(nextNeighbor->getLabel())->second) {
 				weight.find(nextNeighbor->getLabel())->second = currWeight +
