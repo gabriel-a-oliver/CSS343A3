@@ -239,7 +239,7 @@ void Graph::djikstraHelper(std::string currLabel,
 	Vertex* currVert = findVertex(currLabel);
 
 	for (Vertex* nextNeighbor = findVertex(currVert->getNextNeighbor());
-		 nextNeighbor->getNextNeighbor() != currLabel;
+		 nextNeighbor->getCurrentNeighbor() != currLabel;
 		 nextNeighbor = findVertex(currVert->getNextNeighbor())) {
 		if (!nextNeighbor->isVisited()) {
 			nextNeighbor->visit();
