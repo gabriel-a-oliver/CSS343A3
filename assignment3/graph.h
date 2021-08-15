@@ -112,6 +112,10 @@ class Graph {
 							   int currWeight);
 
 	void resetAllNeighbors();
+	void initializeDjikstraMaps(std::string startLabel,
+								std::map<std::string, int>& weight,
+								std::map<std::string, std::string>& previous,
+								std::vector<Vertex*> vertVector);
 
 };  // end Graph
 

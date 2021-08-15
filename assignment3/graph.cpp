@@ -213,13 +213,7 @@ void Graph::djikstraCostToAllVertices(
 
 	vector<Vertex*> vertVector;
 
-	for (pair<string, Vertex*> currPair : *vertices) {
-		if (currPair.first != startLabel) {
-			vertVector.push_back(currPair.second);
-			weight.insert(pair<string, int>(currPair.first, INT_MAX));
-			previous.insert(pair<string, string>(currPair.first, ""));
-		}
-	}
+	initializeDjikstraMaps(startLabel, weight, previous, vertVector);
 
 	Vertex* startVertex = findVertex(startLabel);
 
@@ -250,7 +244,7 @@ void Graph::djikstraHelper(std::string currLabel,
 		}
 		else {
 			if (currWeight + currVert->getEdgeWeight(nextNeighbor->getLabel())
-					<= weight.find(nextNeighbor->getLabel())->second) {
+					< weight.find(nextNeighbor->getLabel())->second) {
 				weight.find(nextNeighbor->getLabel())->second = currWeight +
 							currVert->getEdgeWeight(nextNeighbor->getLabel());
 				previous.find(nextNeighbor->getLabel())->second = currLabel;
@@ -264,6 +258,19 @@ void Graph::djikstraHelper(std::string currLabel,
 		djikstraHelper(nextNeighbor->getLabel(), weight, previous,
 					   currWeight + currVert->getEdgeWeight(
 						nextNeighbor->getLabel()));
+	}
+}
+
+void Graph::initializeDjikstraMaps(std::string startLabel,
+								   std::map<std::string, int>& weight,
+								   std::map<std::string, std::string>& previous,
+								   std::vector<Vertex*> vertVector) {
+	for (pair<string, Vertex*> currPair : *vertices) {
+		if (currPair.first != startLabel) {
+			vertVector.push_back(currPair.second);
+			weight.insert(pair<string, int>(currPair.first, INT_MAX));
+			previous.insert(pair<string, string>(currPair.first, ""));
+		}
 	}
 }
 
