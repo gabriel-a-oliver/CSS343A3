@@ -111,6 +111,8 @@ class Graph {
 							   std::map<std::string, std::string>& previous,
 							   int currWeight);
 
+	void resetAllNeighbors();
+
 };  // end Graph
 
 #include "graph.cpp"

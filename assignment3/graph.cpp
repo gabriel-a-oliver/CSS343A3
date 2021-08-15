@@ -129,6 +129,8 @@ void Graph::depthFirstTraversal(std::string startLabel,
 	}
 
 	unvisitVertices();
+	resetAllNeighbors();
+
 	list <Vertex*> visitedVertList;
 	Vertex* startingVertex = findVertex(startLabel);
 
@@ -147,6 +149,8 @@ void Graph::breadthFirstTraversal(std::string startLabel,
 	}
 
 	unvisitVertices();
+	resetAllNeighbors();
+
 	list<Vertex*> visitedVertList;
 	queue<Vertex*> bfsQueue;
 
@@ -204,6 +208,8 @@ void Graph::djikstraCostToAllVertices(
 
 	weight.clear();
 	previous.clear();
+	unvisitVertices();
+	resetAllNeighbors();
 
 	vector<Vertex*> vertVector;
 
@@ -213,11 +219,10 @@ void Graph::djikstraCostToAllVertices(
 		previous.insert(pair<string, string>(currPair.first, ""));
 	}
 
-	unvisitVertices();
 	Vertex* startVertex = findVertex(startLabel);
 
 	weight.find(startLabel)->second = 0;
-	previous.find(startLabel)->second = nullptr;
+	previous.find(startLabel)->second = "";
 	startVertex->visit();
 
 	djikstraHelper(startLabel, weight, previous, 0);
@@ -291,7 +296,7 @@ Vertex* Graph::findVertex(const std::string& vertexLabel) const {
 	_Rb_tree_iterator<pair<const string, Vertex *>> result =
 			vertices->find(vertexLabel);
 	if (result == vertices->end()) {
-		cout << "Vertex " << vertexLabel << " does not exist." << endl;
+		//cout << "Vertex " << vertexLabel << " does not exist." << endl;
 		return nullptr;
 	}
 	return result->second;
@@ -331,4 +336,10 @@ bool Graph::verticesEdgePairCompatible(std::string start,
 		}
 	}
 	return true;
+}
+
+void Graph::resetAllNeighbors() {
+	for (pair<string, Vertex*> currPair : *vertices) {
+		currPair.second->resetNeighbor();
+	}
 }
