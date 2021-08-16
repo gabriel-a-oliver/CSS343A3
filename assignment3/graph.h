@@ -4,6 +4,18 @@
  * A graph is made up of vertices and edges
  * A vertex can be connected to other vertices via weighted, directed edge
  */
+
+/*
+Pankhuri Singhal, Gabriel Oliver
+8/16/21
+CSS 343
+Prof. Awad
+Header file that represents a graph read from a file, with methods to conduct 
+DFS, BFS, and Dijkstra's algorithm to find an optimal path between 
+two vertices. Also checks if vertices and edges are compatible, finds 
+vertices and gets the weight of the edge between the start and end. 
+Also has a destructor to free up memory.
+*/
 #pragma once
 #ifndef GRAPH_H
 #define GRAPH_H
