@@ -14,6 +14,8 @@ class Edge {
     /** empty edge constructor */
     Edge();
 
+    ~Edge();
+
     /** constructor with label and weight */
     Edge(const std::string& end, int weight);
 

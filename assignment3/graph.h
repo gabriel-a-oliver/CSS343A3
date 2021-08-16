@@ -87,8 +87,7 @@ class Graph {
 
     /** helper for depthFirstTraversal */
     void depthFirstTraversalHelper(Vertex* startVertex,
-                                   void visit(const std::string&),
-                                   std::list<Vertex*> visitedVertList);
+                                   void visit(const std::string&));
 
     /** helper for breadthFirstTraversal */
     /*void breadthFirstTraversalHelper(Vertex* startVertex,
@@ -114,8 +113,7 @@ class Graph {
 	void resetAllNeighbors();
 	void initializeDjikstraMaps(std::string startLabel,
 								std::map<std::string, int>& weight,
-								std::map<std::string, std::string>& previous,
-								std::vector<Vertex*> vertVector);
+								std::map<std::string, std::string>& previous);
 
 };  // end Graph
 

@@ -29,6 +29,10 @@ Vertex::Vertex(std::string label) {
 
 }
 
+Vertex::~Vertex() {
+	//adjacencyList.clear();
+}
+
 /** @return  The label of this vertex. */
 string Vertex::getLabel() const { 
     return this->vertexLabel; 

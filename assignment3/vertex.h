@@ -23,6 +23,8 @@ class Vertex {
         NOTE: A vertex must have a unique label that cannot be changed. */
     explicit Vertex(std::string label);
 
+    ~Vertex();
+
     /** @return  The label of this vertex. */
     std::string getLabel() const;
 

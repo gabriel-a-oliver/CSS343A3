@@ -32,6 +32,12 @@ Graph::Graph() {
     only vertices stored in map
     no pointers to edges created by graph */
 Graph::~Graph() {
+	vector<Vertex*> deleteVector;
+	for (pair<string, Vertex*> currPair : *vertices) {
+		delete currPair.second;
+		currPair.first = "";
+	}
+	vertices->clear();
 	delete vertices;
 	vertices = nullptr;
 	numberOfVertices = 0;
@@ -54,8 +60,26 @@ bool Graph::add(std::string start, std::string end, int edgeWeight) {
 	if (!compatible) {
 		return false;
 	}
-	vertices->insert(pair<string, Vertex*>(start, new Vertex(start)));
-	vertices->insert(pair<string, Vertex*>(end, new Vertex(end)));
+
+	findOrCreateVertex(start);
+	findOrCreateVertex(end);
+
+	/*Vertex* compareStart = vertices->find(start);
+	if (compareStart != nullptr) {
+		Vertex* startVert = new Vertex(start);
+		pair<string, Vertex*> startPair(start, startVert);// = new pair<string, Vertex*>(start, startVert);
+		vertices->insert(startPair);
+	}
+
+	Vertex* compareEnd = vertices->find(end);
+	if (compareEnd != nullptr) {
+		Vertex* endVert = new Vertex(end);
+		pair<string, Vertex*> endPair(end, endVert);// = new pair<string, Vertex*>(end, endVert);
+		vertices->insert(endPair);
+	}
+*/
+
+
 	findVertex(start)->connect(end, edgeWeight);
 	numberOfVertices = static_cast<int>(vertices->size());
 	numberOfEdges++;
@@ -88,6 +112,8 @@ int Graph::getEdgeWeight(std::string start, std::string end) const {
     each edge line is in the form of "string string int"
     fromVertex  toVertex    edgeWeight */
 void Graph::readFile(std::string filename) {
+
+	// /TODO do the same process as the deconstructor
 	delete vertices;
 	vertices = new map<std::string, Vertex*>;
 
@@ -132,12 +158,10 @@ void Graph::depthFirstTraversal(std::string startLabel,
 	unvisitVertices();
 	resetAllNeighbors();
 
-	list <Vertex*> visitedVertList;
 	Vertex* startingVertex = findVertex(startLabel);
 
-	depthFirstTraversalHelper(startingVertex, visit, visitedVertList);
+	depthFirstTraversalHelper(startingVertex, visit);
 	unvisitVertices();
-	visitedVertList.clear();
 }
 
 /** breadth-first traversal starting from startLabel
@@ -152,7 +176,6 @@ void Graph::breadthFirstTraversal(std::string startLabel,
 	unvisitVertices();
 	resetAllNeighbors();
 
-	list<Vertex*> visitedVertList;
 	queue<Vertex*> bfsQueue;
 
 	Vertex* startingVertex = findVertex(startLabel);
@@ -169,7 +192,6 @@ void Graph::breadthFirstTraversal(std::string startLabel,
 		if (!currentVert->isVisited()) {
 			visit(currentVert->getLabel());
 			currentVert->visit();
-			visitedVertList.push_back(currentVert);
 		}
 		for (Vertex* nextNeighbor = findVertex(currentVert->getCurrentNeighbor());
 			 nextNeighbor != currentVert;
@@ -177,14 +199,12 @@ void Graph::breadthFirstTraversal(std::string startLabel,
 			if (!nextNeighbor->isVisited()) {
 				visit(nextNeighbor->getLabel());
 				nextNeighbor->visit();
-				visitedVertList.push_back(nextNeighbor);
 				bfsQueue.push(nextNeighbor);
 			}
 		}
 		bfsQueue.pop();
 	}
 	unvisitVertices();
-	visitedVertList.clear();
 }
 
 /** find the lowest cost from startLabel to all vertices that can be reached
@@ -212,9 +232,8 @@ void Graph::djikstraCostToAllVertices(
 	unvisitVertices();
 	resetAllNeighbors();
 
-	vector<Vertex*> vertVector;
 
-	initializeDjikstraMaps(startLabel, weight, previous, vertVector);
+	initializeDjikstraMaps(startLabel, weight, previous);
 
 	Vertex* startVertex = findVertex(startLabel);
 
@@ -224,7 +243,6 @@ void Graph::djikstraCostToAllVertices(
 
 	djikstraHelper(startLabel, weight, previous, 0);
 
-	vertVector.clear();
 }
 
 void Graph::djikstraHelper(std::string currLabel,
@@ -267,11 +285,9 @@ void Graph::djikstraHelper(std::string currLabel,
 
 void Graph::initializeDjikstraMaps(std::string startLabel,
 								   std::map<std::string, int>& weight,
-								   std::map<std::string, std::string>& previous,
-								   std::vector<Vertex*> vertVector) {
+								   std::map<std::string, std::string>& previous) {
 	for (pair<string, Vertex*> currPair : *vertices) {
 		if (currPair.first != startLabel) {
-			vertVector.push_back(currPair.second);
 			weight.insert(pair<string, int>(currPair.first, INT_MAX));
 			previous.insert(pair<string, string>(currPair.first, ""));
 		}
@@ -280,19 +296,16 @@ void Graph::initializeDjikstraMaps(std::string startLabel,
 
 /** helper for depthFirstTraversal */
 void Graph::depthFirstTraversalHelper(Vertex* startVertex,
-									  void visit(const std::string&),
-									  std::list<Vertex*> visitedVertList) {
+									  void visit(const std::string&)) {
 	string startVertexLabel = startVertex->getLabel();
 	visit(startVertexLabel);
 	startVertex->visit();
-	visitedVertList.push_back(startVertex);
 	startVertex->resetNeighbor();
-	// need to use a neighbor iterator /////////////////////////////////////////////////////////////////////////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	for (Vertex* nextNeighbor = findVertex(startVertex->getCurrentNeighbor());
 		 nextNeighbor->getLabel() != startVertexLabel;
 		 nextNeighbor = findVertex(startVertex->getNextNeighbor())) /*this is causing issues*/{ ////////////////////////////////////////////////////!!!!!!!
 		if (!nextNeighbor->isVisited()) {
-			depthFirstTraversalHelper(nextNeighbor, visit, visitedVertList);
+			depthFirstTraversalHelper(nextNeighbor, visit);
 		}
 	}
 }
@@ -306,6 +319,9 @@ void Graph::unvisitVertices() {
 
 /** find a vertex, if it does not exist return nullptr */
 Vertex* Graph::findVertex(const std::string& vertexLabel) const {
+	if (vertices->empty()) {
+		return nullptr;
+	}
 	_Rb_tree_iterator<pair<const string, Vertex *>> result =
 			vertices->find(vertexLabel);
 	if (result == vertices->end()) {
