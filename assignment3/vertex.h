@@ -1,5 +1,17 @@
 /* Assignment 3 was made by Pankhuri Singhal and Gabriel Oliver */
 
+/*
+Pankhuri Singhal, Gabriel Oliver
+CSS 343
+8/16/21
+Prof. Awad
+The header file for The class that symbolizes 
+a single vertex of the overall graph and its corresponding 
+adjacency list. Has methods to (un)visit the vertex for search 
+algorithms, connect and disconnect an edge, get the next neighbor, 
+and compare vertices.
+*/
+
 #pragma once
 /**
  * Each vertex has a unique label
