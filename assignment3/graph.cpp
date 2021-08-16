@@ -73,20 +73,26 @@ bool Graph::add(const std::string& start, const std::string& end, int edgeWeight
 int Graph::getEdgeWeight(const std::string& start, const std::string& end) const {
 	Vertex* startVert = findVertex(start);
 	Vertex* endVert = findVertex(end);
+	if (startVert == nullptr) {
+		cout << start << "does not exist" << endl;
+		return INT_MAX;
+	}
+	if (endVert == nullptr) {
+		cout << end << "does not exist" << endl;
+		return INT_MAX;
+	}
 	if (start == end) {
 		cout << start << " is the same as " << end << "." << endl;
-		return 0;
+		return INT_MAX;
 	}
-	for (Vertex* nextNeighbor = startVert;
-	nextNeighbor->getLabel() != start;
-	nextNeighbor = findVertex(nextNeighbor->getNextNeighbor())) {
-		if (nextNeighbor == endVert) {
-			return startVert->getEdgeWeight(end);
-		}
+	int result = INT_MAX;
+	result = startVert->getEdgeWeight(end);
+	if (result < 0) {
+		cout << "There is no connection starting from " << start
+		<< " and ending at " << end << "." << endl;
+		return INT_MAX;
 	}
-	cout << "There is no connection starting from " << start
-			<< " and ending at " << end << "." << endl;
-	return INT_MAX;
+	return result;
 }
 
 /** read edges from file
