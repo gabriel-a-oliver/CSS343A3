@@ -44,7 +44,7 @@ int Graph::getNumEdges() const { return numberOfEdges; }
     calls Vertex::connect
     a vertex cannot connect to itself
     or have multiple edges to another vertex */
-bool Graph::add(std::string start, std::string end, int edgeWeight) {
+bool Graph::add(const std::string& start, const std::string& end, int edgeWeight) {
 	bool compatible = verticesEdgePairCompatible(start, end);
 	if (!compatible) {
 		return false;
@@ -59,7 +59,7 @@ bool Graph::add(std::string start, std::string end, int edgeWeight) {
 
 /** return weight of the edge between start and end
     returns INT_MAX if not connected or vertices don't exist */
-int Graph::getEdgeWeight(std::string start, std::string end) const {
+int Graph::getEdgeWeight(const std::string& start, const std::string& end) const {
 	Vertex* startVert = findVertex(start);
 	Vertex* endVert = findVertex(end);
 	if (start == end) {

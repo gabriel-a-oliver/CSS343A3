@@ -246,6 +246,8 @@ void testGraph2() {
     graphCostDisplay();
     cout << "Results of Djik algo starting at A: " << endl;
     cout << graphOut.str() << endl;
+
+    cout << "What is the edge weight of O->P? " << g.getEdgeWeight("O", "P") << endl;
 }
 
 int main() {

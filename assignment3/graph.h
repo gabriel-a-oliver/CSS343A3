@@ -34,11 +34,11 @@ class Graph {
         calls Vertex::connect
         a vertex cannot connect to itself
         or have multiple edges to another vertex */
-    bool add(std::string start, std::string end, int edgeWeight = 0);
+    bool add(const std::string& start, const std::string& end, int edgeWeight = 0);
 
     /** return weight of the edge between start and end
         returns INT_MAX if not connected or vertices don't exist */
-    int getEdgeWeight(std::string start, std::string end) const;
+    int getEdgeWeight(const std::string& start, const std::string& end) const;
 
     /** read edges from file
         the first line of the file is an integer, indicating number of edges
