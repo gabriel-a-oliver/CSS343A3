@@ -1,5 +1,17 @@
 /* Assignment 3 was made by Pankhuri Singhal and Gabriel Oliver */
 
+/*
+Pankhuri Singhal, Gabriel Oliver
+8/16/21
+CSS 343
+Prof. Awad
+Implementation that represents a graph read from a file, with methods to conduct 
+DFS, BFS, and Dijkstra's algorithm to find an optimal path between 
+two vertices. Also checks if vertices and edges are compatible, finds 
+vertices and gets the weight of the edge between the start and end. 
+Also has a destructor to free up memory.
+*/
+
 #include <queue>
 #include <climits>
 #include <iostream>
