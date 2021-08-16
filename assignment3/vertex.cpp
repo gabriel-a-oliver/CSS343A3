@@ -1,5 +1,15 @@
 /* Assignment 3 was made by Pankhuri Singhal and Gabriel Oliver */
 
+/*
+Pankhuri Singhal, Gabriel Oliver
+8/16/2021
+CSS 343 
+Prof. Awad
+Implementation of The class that symbolizes a single vertex of the overall graph and its 
+corresponding adjacency list. Has methods to (un)visit the vertex for search algorithms, 
+connect and disconnect an edge, get the next neighbor, and compare vertices
+*/
+
 #include <iostream>
 #include <map>
 #include <iterator>
