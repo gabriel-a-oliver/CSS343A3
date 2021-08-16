@@ -62,7 +62,9 @@ Represents a single edge of the graph, connecting between two vertices. Has meth
   
 
 **********************GRAPH CLASS:********************************
-Represents a graph read from a file, with methods to conduct DFS, BFS, and Dijkstra's algorithm to find an optimal path between two vertices. Also checks if vertices and edges are compatible, finds vertices and gets the weight of the edge between the start and end. Also has a destructor to free up memory.
+Represents a graph read from a file, with methods to conduct DFS, BFS, and Dijkstra's algorithm to 
+find an optimal path between two vertices. Also checks if vertices and edges are compatible, 
+finds vertices and gets the weight of the edge between the start and end. Also has a destructor to free up memory.
 
   Graph(); -- creates an empty graph, with the number of edges and vertices set to 0. Initializes a new map for vertices.
 
@@ -109,7 +111,9 @@ Represents a graph read from a file, with methods to conduct DFS, BFS, and Dijks
  
  Vertex* findOrCreateVertex(const std::string& vertexLabel); -- if the vertex from findVertex is not found (if the item returned is nullptr) then create the vertex
  
- bool verticesEdgePairCompatible(const std::string& start, const std::string& end) const; -- determines whether 2 vertices can be used in an operation, like connection or disconnect. Returns true if the two vertices are distinct or if the connection is complete. False otherwise returned.
+ bool verticesEdgePairCompatible(const std::string& start, const std::string& end) const; -- determines whether 2 vertices can be used in an operation, 
+ like connection or disconnect. Returns true if the two vertices are distinct 
+ or if the connection is complete. False otherwise returned.
  
  void resetAllNeighbors(); -- resets all vertices to the beginning of their adjacency list, helps to restart a traversal from the beginning
  
