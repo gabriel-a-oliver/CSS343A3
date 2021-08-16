@@ -115,6 +115,8 @@ class Graph {
 								std::map<std::string, int>& weight,
 								std::map<std::string, std::string>& previous);
 
+	void clearEverything();
+
 };  // end Graph
 
 #include "graph.cpp"

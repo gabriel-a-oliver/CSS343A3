@@ -32,7 +32,10 @@ Graph::Graph() {
     only vertices stored in map
     no pointers to edges created by graph */
 Graph::~Graph() {
-	vector<Vertex*> deleteVector;
+	clearEverything();
+}
+
+void Graph::clearEverything() {
 	for (pair<string, Vertex*> currPair : *vertices) {
 		delete currPair.second;
 		currPair.first = "";
@@ -112,10 +115,8 @@ int Graph::getEdgeWeight(std::string start, std::string end) const {
     each edge line is in the form of "string string int"
     fromVertex  toVertex    edgeWeight */
 void Graph::readFile(std::string filename) {
-
-	// /TODO do the same process as the deconstructor
-	delete vertices;
-	vertices = new map<std::string, Vertex*>;
+	clearEverything();
+	vertices = new map<std::string, Vertex*>();
 
 	std::ifstream graphFile;
 	graphFile.open(filename);
