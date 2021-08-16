@@ -6,9 +6,6 @@
 
 #include <string>
 
-#include "edge.h"
-
-
 ////////////////////////////////////////////////////////////////////////////////
 // This is 80 characters - Keep all lines under 80 characters                 //
 ////////////////////////////////////////////////////////////////////////////////
@@ -18,7 +15,6 @@
 Edge::Edge() {
   this->endVertex = "";
   this->edgeWeight = 0; //just in case
-  
 }
 
 /** constructor with label and weight */

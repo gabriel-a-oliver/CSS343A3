@@ -1,17 +1,11 @@
 /* Assignment 3 was made by Pankhuri Singhal and Gabriel Oliver */
 
-#include <climits>
-
-#include "vertex.h"
-
 #include <iostream>
-#include <functional>
 #include <map>
 #include <iterator>
 #include <string>
 #include <set>
 
-#include "edge.h"
 using namespace std;
 
 
@@ -28,7 +22,6 @@ Vertex::Vertex(std::string label) {
     this->vertexLabel = label;
     this->visited = false;
     adjacencyList.clear();
-
 }
 
 /** @return  The label of this vertex. */

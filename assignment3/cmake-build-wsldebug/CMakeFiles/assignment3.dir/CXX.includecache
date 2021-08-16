@@ -23,8 +23,6 @@ graph.h
 /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/edge.cpp
 string
 -
-edge.h
-/mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/edge.h
 
 /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/edge.h
 string
@@ -59,13 +57,7 @@ graph.cpp
 /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/graph.cpp
 
 /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/vertex.cpp
-climits
--
-vertex.h
-/mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/vertex.h
 iostream
--
-functional
 -
 map
 -
@@ -75,8 +67,6 @@ string
 -
 set
 -
-edge.h
-/mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/edge.h
 
 /mnt/c/Users/olive/Documents/GitHub/CSS343A3/assignment3/vertex.h
 functional
