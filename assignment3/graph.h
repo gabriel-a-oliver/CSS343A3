@@ -89,6 +89,15 @@ class Graph {
     void depthFirstTraversalHelper(Vertex* startVertex,
                                    void visit(const std::string&));
 
+    void initializeDjikstraMaps(std::string startLabel,
+								std::map<std::string, int>& weight,
+								std::map<std::string, std::string>& previous);
+
+    void djikstraHelper(std::string currLabel,
+						std::map<std::string, int>& weight,
+						std::map<std::string, std::string>& previous,
+						int currWeight);
+
     /** mark all verticies as unvisited */
     void unvisitVertices();
 
@@ -98,18 +107,9 @@ class Graph {
     /** find a vertex, if it does not exist create it and return it */
     Vertex* findOrCreateVertex(const std::string& vertexLabel);
 
-
     bool verticesEdgePairCompatible(std::string start, std::string end) const;
 
-	void djikstraHelper(std::string currLabel,
-							   std::map<std::string, int>& weight,
-							   std::map<std::string, std::string>& previous,
-							   int currWeight);
-
 	void resetAllNeighbors();
-	void initializeDjikstraMaps(std::string startLabel,
-								std::map<std::string, int>& weight,
-								std::map<std::string, std::string>& previous);
 
 	void clearEverything();
 

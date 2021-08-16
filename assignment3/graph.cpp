@@ -35,18 +35,6 @@ Graph::~Graph() {
 	clearEverything();
 }
 
-void Graph::clearEverything() {
-	for (pair<string, Vertex*> currPair : *vertices) {
-		delete currPair.second;
-		currPair.first = "";
-	}
-	vertices->clear();
-	delete vertices;
-	vertices = nullptr;
-	numberOfVertices = 0;
-	numberOfEdges = 0;
-}
-
 /** return number of vertices */
 int Graph::getNumVertices() const { return numberOfVertices; }
 
@@ -137,6 +125,22 @@ void Graph::depthFirstTraversal(std::string startLabel,
 	unvisitVertices();
 }
 
+/** helper for depthFirstTraversal */
+void Graph::depthFirstTraversalHelper(Vertex* startVertex,
+									  void visit(const std::string&)) {
+	string startVertexLabel = startVertex->getLabel();
+	visit(startVertexLabel);
+	startVertex->visit();
+	startVertex->resetNeighbor();
+	for (Vertex* nextNeighbor = findVertex(startVertex->getCurrentNeighbor());
+	nextNeighbor->getLabel() != startVertexLabel;
+	nextNeighbor = findVertex(startVertex->getNextNeighbor())) {
+		if (!nextNeighbor->isVisited()) {
+			depthFirstTraversalHelper(nextNeighbor, visit);
+		}
+	}
+}
+
 /** breadth-first traversal starting from startLabel
     call the function visit on each vertex label */
 void Graph::breadthFirstTraversal(std::string startLabel,
@@ -199,6 +203,17 @@ void Graph::djikstraCostToAllVertices(
 	djikstraHelper(startLabel, weight, previous, 0);
 }
 
+void Graph::initializeDjikstraMaps(std::string startLabel,
+								   std::map<std::string, int>& weight,
+								   std::map<std::string, std::string>& previous) {
+	for (pair<string, Vertex*> currPair : *vertices) {
+		if (currPair.first != startLabel) {
+			weight.insert(pair<string, int>(currPair.first, INT_MAX));
+			previous.insert(pair<string, string>(currPair.first, ""));
+		}
+	}
+}
+
 void Graph::djikstraHelper(std::string currLabel,
 						   std::map<std::string, int>& weight,
 						   std::map<std::string, std::string>& previous,
@@ -206,8 +221,8 @@ void Graph::djikstraHelper(std::string currLabel,
 	Vertex* currVert = findVertex(currLabel);
 
 	for (Vertex* nextNeighbor = findVertex(currVert->getNextNeighbor());
-		 nextNeighbor->getLabel() != currLabel;
-		 nextNeighbor = findVertex(currVert->getNextNeighbor())) {
+	nextNeighbor->getLabel() != currLabel;
+	nextNeighbor = findVertex(currVert->getNextNeighbor())) {
 		if (!nextNeighbor->isVisited()) {
 			nextNeighbor->visit();
 			weight.find(nextNeighbor->getLabel())->second = currWeight +
@@ -217,9 +232,9 @@ void Graph::djikstraHelper(std::string currLabel,
 		else {
 			nextNeighbor->resetNeighbor();
 			if (currWeight + currVert->getEdgeWeight(nextNeighbor->getLabel())
-					< weight.find(nextNeighbor->getLabel())->second) {
+			< weight.find(nextNeighbor->getLabel())->second) {
 				weight.find(nextNeighbor->getLabel())->second = currWeight +
-							currVert->getEdgeWeight(nextNeighbor->getLabel());
+						currVert->getEdgeWeight(nextNeighbor->getLabel());
 				previous.find(nextNeighbor->getLabel())->second = currLabel;
 			}
 			else {
@@ -232,34 +247,7 @@ void Graph::djikstraHelper(std::string currLabel,
 		}
 		djikstraHelper(nextNeighbor->getLabel(), weight, previous,
 					   currWeight + currVert->getEdgeWeight(
-						nextNeighbor->getLabel()));
-	}
-}
-
-void Graph::initializeDjikstraMaps(std::string startLabel,
-								   std::map<std::string, int>& weight,
-								   std::map<std::string, std::string>& previous) {
-	for (pair<string, Vertex*> currPair : *vertices) {
-		if (currPair.first != startLabel) {
-			weight.insert(pair<string, int>(currPair.first, INT_MAX));
-			previous.insert(pair<string, string>(currPair.first, ""));
-		}
-	}
-}
-
-/** helper for depthFirstTraversal */
-void Graph::depthFirstTraversalHelper(Vertex* startVertex,
-									  void visit(const std::string&)) {
-	string startVertexLabel = startVertex->getLabel();
-	visit(startVertexLabel);
-	startVertex->visit();
-	startVertex->resetNeighbor();
-	for (Vertex* nextNeighbor = findVertex(startVertex->getCurrentNeighbor());
-		 nextNeighbor->getLabel() != startVertexLabel;
-		 nextNeighbor = findVertex(startVertex->getNextNeighbor())) {
-		if (!nextNeighbor->isVisited()) {
-			depthFirstTraversalHelper(nextNeighbor, visit);
-		}
+					   		nextNeighbor->getLabel()));
 	}
 }
 
@@ -323,4 +311,16 @@ void Graph::resetAllNeighbors() {
 	for (pair<string, Vertex*> currPair : *vertices) {
 		currPair.second->resetNeighbor();
 	}
+}
+
+void Graph::clearEverything() {
+	for (pair<string, Vertex*> currPair : *vertices) {
+		delete currPair.second;
+		currPair.first = "";
+	}
+	vertices->clear();
+	delete vertices;
+	vertices = nullptr;
+	numberOfVertices = 0;
+	numberOfEdges = 0;
 }
