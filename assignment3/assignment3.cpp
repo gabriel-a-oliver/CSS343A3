@@ -182,6 +182,71 @@ void testGraph2() {
                  "P(5) Q(2) R(3) via [Q] S(6) via [Q R] " +
                  "T(8) via [Q R S] U(9) via [Q R S] "s)
          << "Djisktra O" << endl;
+
+
+    cout << endl << "reading graph1.txt" << endl;
+    g.readFile("graph1.txt");
+    cout << isOK(g.getNumVertices(), 10) << "10 vertices" << endl;
+    cout << isOK(g.getNumEdges(), 9) << "9 edges" << endl;
+
+    graphOut.str("");
+    g.depthFirstTraversal("A", graphVisitor);
+    cout << isOK(graphOut.str(), "A B C D E F G H "s) << "DFS" << endl;
+
+    graphOut.str("");
+    g.breadthFirstTraversal("A", graphVisitor);
+    cout << isOK(graphOut.str(), "A B H C G D E F "s) << "BFS" << endl;
+
+    g.djikstraCostToAllVertices("A", weight, previous);
+    graphCostDisplay();
+    cout << isOK(graphOut.str(),
+				 "B(1) C(2) via [B] "s +
+				 "D(3) via [B C] E(4) via [B C D] "s +
+				 "F(5) via [B C D E] " +
+				 "G(4) via [H] "s +
+				 "H(3) "s)
+				 << "Djisktra" << endl;
+
+    cout << endl << "reading graph2.txt again" << endl;
+    g.readFile("graph2.txt");
+    cout << isOK(g.getNumVertices(), 21) << "21 vertices" << endl;
+    cout << isOK(g.getNumEdges(), 24) << "24 edges" << endl;
+
+    graphOut.str("");
+    g.depthFirstTraversal("A", graphVisitor);
+    cout << isOK(graphOut.str(), "A B E F J C G K L D H M I N "s)
+    << "DFS from A" << endl;
+
+    graphOut.str("");
+    g.depthFirstTraversal("O", graphVisitor);
+    cout << isOK(graphOut.str(), "O P R S T U Q "s)
+    << "DFS from O" << endl;
+
+    graphOut.str("");
+    g.breadthFirstTraversal("A", graphVisitor);
+    cout << isOK(graphOut.str(), "A B C D E F G H I J K L M N "s)
+    << "BFS from A" << endl;
+
+    graphOut.str("");
+    g.breadthFirstTraversal("D", graphVisitor);
+    cout << isOK(graphOut.str(), "D H I M N "s)
+    << "BFS from D" << endl;
+
+    graphOut.str("");
+    g.depthFirstTraversal("U", graphVisitor);
+    cout << isOK(graphOut.str(), "U "s)
+    << "DFS from U" << endl;
+
+    graphOut.str("");
+    g.breadthFirstTraversal("U", graphVisitor);
+    cout << isOK(graphOut.str(), "U "s)
+    << "BFS from U" << endl;
+
+    g.djikstraCostToAllVertices("A", weight, previous);
+    graphCostDisplay();
+    cout << "Results of Djik algo starting at A: " << endl;
+    cout << graphOut.str() << endl;
+
 }
 
 int main() {
