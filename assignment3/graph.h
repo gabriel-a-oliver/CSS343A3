@@ -10,13 +10,6 @@
 
 #include <map>
 #include <string>
-
-//Gabe Code
-#include <stack>
-#include <queue>
-#include <list>
-//End of Gabe Code
-
 #include "vertex.h"
 #include "edge.h"
 
