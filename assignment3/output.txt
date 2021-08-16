@@ -1,0 +1,25 @@
+
+testGraph0
+OK: 3 vertices
+OK: 3 edges
+OK: DFS
+OK: BFS
+OK: Djisktra
+
+testGraph1
+OK: 10 vertices
+OK: 9 edges
+OK: DFS
+OK: BFS
+OK: Djisktra
+
+testGraph2
+OK: 21 vertices
+OK: 24 edges
+OK: DFS from A
+OK: DFS from O
+OK: BFS from A
+OK: BFS from D
+OK: DFS from U
+OK: BFS from U
+OK: Djisktra O
