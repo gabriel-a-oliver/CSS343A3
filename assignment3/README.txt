@@ -10,7 +10,8 @@ To run the program, you must:
 
 Main methods and descriptions:
 
-VERTEX CLASS:
+
+*************VERTEX CLASS:***************************
 The class that symbolizes a single vertex of the overall graph and its corresponding adjacency list. Has methods to (un)visit the vertex for search algorithms, connect and disconnect an edge, get the next neighbor, and compare vertices.
 
   explicit Vertex(std::string label); -- creates a vertex, marks it unvisited, and clears its respective adjacency list.
@@ -42,7 +43,7 @@ The class that symbolizes a single vertex of the overall graph and its correspon
   std::string getCurrentNeighbor(); -- gets the current neighbor of the vertex, otherwise it returns the invoking vertex label if the iterator is at the end of the list.
   
 
-EDGE CLASS:  
+****************EDGE CLASS:*******************************
 Represents a single edge of the graph, connecting between two vertices. Has methods to represent weight and the end vertex label.
 
   Edge(); -- empty edge constructor, sets weight to 0 and end vertex as empty string
@@ -54,7 +55,7 @@ Represents a single edge of the graph, connecting between two vertices. Has meth
   int getWeight() const; -- return the weight/cost of travlleing via this edge
   
 
-GRAPH CLASS:
+**********************GRAPH CLASS:********************************
 Represents a graph read from a file, with methods to conduct DFS, BFS, and Dijkstra's algorithm to find an optimal path between two vertices. Also checks if vertices and edges are compatible, finds vertices and gets the weight of the edge between the start and end. Also has a destructor to free up memory.
 
   Graph(); -- creates an empty graph, with the number of edges and vertices set to 0. Initializes a new map for vertices.
@@ -87,14 +88,14 @@ Represents a graph read from a file, with methods to conduct DFS, BFS, and Dijks
   
   
  void initializeDjikstraMaps(const std::string& startLabel,
-								std::map<std::string, int>& weight,
-								std::map<std::string, std::string>& previous); -- initilizes default values for maps used in Dijkstra's
+			     std::map<std::string, int>& weight,
+			     std::map<std::string, std::string>& previous); -- initilizes default values for maps used in Dijkstra's
                 
   
  void djikstraHelper(const std::string& currLabel,
-						std::map<std::string, int>& weight,
-						std::map<std::string, std::string>& previous,
-						int currWeight); -- helper for Dijkstra's, finds shortest path to each vertex 
+			std::map<std::string, int>& weight,
+			std::map<std::string, std::string>& previous,
+			int currWeight); -- helper for Dijkstra's, finds shortest path to each vertex 
             
  void unvisitVertices(); -- marks all vertices unvisited, used after each traversal to prep for next traversal
  
