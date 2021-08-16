@@ -44,16 +44,16 @@ class Graph {
         the first line of the file is an integer, indicating number of edges
         each edge line is in the form of "string string int"
         fromVertex  toVertex    edgeWeight */
-    void readFile(std::string filename);
+    void readFile(const std::string& filename);
 
     /** depth-first traversal starting from startLabel
         call the function visit on each vertex label */
-    void depthFirstTraversal(std::string startLabel,
+    void depthFirstTraversal(const std::string& startLabel,
                              void visit(const std::string&));
 
     /** breadth-first traversal starting from startLabel
         call the function visit on each vertex label */
-    void breadthFirstTraversal(std::string startLabel,
+    void breadthFirstTraversal(const std::string& startLabel,
                                void visit(const std::string&));
 
     /** find the lowest cost from startLabel to all vertices that can be reached
@@ -66,7 +66,7 @@ class Graph {
         cpplint gives warning to use pointer instead of a non-const map
         which I am ignoring for readability */
     void djikstraCostToAllVertices(
-        std::string startLabel,
+        const std::string& startLabel,
         std::map<std::string, int>& weight,
         std::map<std::string, std::string>& previous);
 
@@ -87,14 +87,14 @@ class Graph {
     // Parameters: string startLabel, map<string, int>& weight, map<string,
     // 			   string>& previous
     // Post: sets the default values for both maps.
-    void initializeDjikstraMaps(std::string startLabel,
+    void initializeDjikstraMaps(const std::string& startLabel,
 								std::map<std::string, int>& weight,
 								std::map<std::string, std::string>& previous);
 
     // Parameters: string startLabel, map<string, int>& weight, map<string,
     // 			   string>& previous, int currWeight
     // Post: Finds the shortest to each vertex in the maps
-    void djikstraHelper(std::string currLabel,
+    void djikstraHelper(const std::string& currLabel,
 						std::map<std::string, int>& weight,
 						std::map<std::string, std::string>& previous,
 						int currWeight);
@@ -114,7 +114,7 @@ class Graph {
     // Returns: bool true if both strings are not equal to each other, or
     // 			there isn't an edge that starts at start and ends in end.
     //			Returns bool false otherwise.
-    bool verticesEdgePairCompatible(std::string start, std::string end) const;
+    bool verticesEdgePairCompatible(const std::string& start, const std::string& end) const;
 
     // Post: Resets the adjacencyList to all vertices
 	void resetAllNeighbors();

@@ -82,7 +82,7 @@ int Graph::getEdgeWeight(const std::string& start, const std::string& end) const
     the first line of the file is an integer, indicating number of edges
     each edge line is in the form of "string string int"
     fromVertex  toVertex    edgeWeight */
-void Graph::readFile(std::string filename) {
+void Graph::readFile(const std::string& filename) {
 	clearEverything();
 	vertices = new map<std::string, Vertex*>();
 	std::ifstream graphFile;
@@ -110,7 +110,7 @@ void Graph::readFile(std::string filename) {
 
 /** depth-first traversal starting from startLabel
     call the function visit on each vertex label */
-void Graph::depthFirstTraversal(std::string startLabel,
+void Graph::depthFirstTraversal(const std::string& startLabel,
                                 void visit(const std::string&)) {
 	if (vertices->empty()) {
 		cout << "Graph is empty." << endl;
@@ -141,7 +141,7 @@ void Graph::depthFirstTraversalHelper(Vertex* startVertex,
 
 /** breadth-first traversal starting from startLabel
     call the function visit on each vertex label */
-void Graph::breadthFirstTraversal(std::string startLabel,
+void Graph::breadthFirstTraversal(const std::string& startLabel,
                                   void visit(const std::string&)) {
 	if (vertices->empty()) {
 		cout << "Graph is empty." << endl;
@@ -184,7 +184,7 @@ void Graph::breadthFirstTraversal(std::string startLabel,
     cpplint gives warning to use pointer instead of a non-const map
     which I am ignoring for readability */
 void Graph::djikstraCostToAllVertices(
-    std::string startLabel,
+    const std::string& startLabel,
     std::map<std::string, int>& weight,
     std::map<std::string, std::string>& previous) {
 	if (vertices->empty()){
@@ -204,7 +204,7 @@ void Graph::djikstraCostToAllVertices(
 // Parameters: string startLabel, map<string, int>& weight, map<string,
 // 			   string>& previous
 // Post: sets the default values for both maps.
-void Graph::initializeDjikstraMaps(std::string startLabel,
+void Graph::initializeDjikstraMaps(const std::string& startLabel,
 								   std::map<std::string, int>& weight,
 								   std::map<std::string, std::string>& previous) {
 	for (pair<string, Vertex*> currPair : *vertices) {
@@ -218,7 +218,7 @@ void Graph::initializeDjikstraMaps(std::string startLabel,
 // Parameters: string startLabel, map<string, int>& weight, map<string,
 // 			   string>& previous, int currWeight
 // Post: Finds the shortest to each vertex in the maps
-void Graph::djikstraHelper(std::string currLabel,
+void Graph::djikstraHelper(const std::string& currLabel,
 						   std::map<std::string, int>& weight,
 						   std::map<std::string, std::string>& previous,
 						   int currWeight) {
@@ -291,8 +291,8 @@ Vertex* Graph::findOrCreateVertex(const std::string& vertexLabel) {
 // Returns: bool true if both strings are not equal to each other, or
 // 			there isn't an edge that starts at start and ends in end.
 //			Returns bool false otherwise.
-bool Graph::verticesEdgePairCompatible(std::string start,
-									   std::string end) const {
+bool Graph::verticesEdgePairCompatible(const std::string& start,
+									   const std::string& end) const {
 	if (start == end) {
 		cout << "The start and end vertices cannot be the same." << endl;
 		return false;
