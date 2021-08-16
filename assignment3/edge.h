@@ -1,5 +1,14 @@
 /* Assignment 3 was made by Pankhuri Singhal and Gabriel Oliver */
 
+/*
+Pankhuri Singhal, Gabriel Oliver
+CSS 343
+8/16/21
+Prof. Awad
+Header that represents a single edge of the graph, connecting between 
+two vertices. Has methods to represent weight and the end vertex label.
+*/
+
 /**
  * Used by vertex to keep track of all the vertices connects to
  * Each edge has a weight, possibly 0
