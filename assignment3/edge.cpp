@@ -19,11 +19,6 @@ Edge::Edge() {
   
 }
 
-Edge::~Edge() {
-	//endVertex = nullptr;
-	//edgeWeight = 0;
-}
-
 /** constructor with label and weight */
 Edge::Edge(const std::string& end, int weight) {
   this->endVertex = end;

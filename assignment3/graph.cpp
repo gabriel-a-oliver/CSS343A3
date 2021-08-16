@@ -63,26 +63,8 @@ bool Graph::add(std::string start, std::string end, int edgeWeight) {
 	if (!compatible) {
 		return false;
 	}
-
 	findOrCreateVertex(start);
 	findOrCreateVertex(end);
-
-	/*Vertex* compareStart = vertices->find(start);
-	if (compareStart != nullptr) {
-		Vertex* startVert = new Vertex(start);
-		pair<string, Vertex*> startPair(start, startVert);// = new pair<string, Vertex*>(start, startVert);
-		vertices->insert(startPair);
-	}
-
-	Vertex* compareEnd = vertices->find(end);
-	if (compareEnd != nullptr) {
-		Vertex* endVert = new Vertex(end);
-		pair<string, Vertex*> endPair(end, endVert);// = new pair<string, Vertex*>(end, endVert);
-		vertices->insert(endPair);
-	}
-*/
-
-
 	findVertex(start)->connect(end, edgeWeight);
 	numberOfVertices = static_cast<int>(vertices->size());
 	numberOfEdges++;
@@ -117,33 +99,26 @@ int Graph::getEdgeWeight(std::string start, std::string end) const {
 void Graph::readFile(std::string filename) {
 	clearEverything();
 	vertices = new map<std::string, Vertex*>();
-
 	std::ifstream graphFile;
 	graphFile.open(filename);
 	if (!(graphFile.is_open())) {
 		cout << "File " << filename << " cannot be opened." << endl;
 		return;
 	}
-
 	string numOfEdgesStr;
 	getline(graphFile, numOfEdgesStr);
 	int tempNumOfEdges = std::stoi(numOfEdgesStr);
 
 	for (int i = 0; i < tempNumOfEdges; i++) {
-
 		std::string connection;
 		getline(graphFile, connection);
-
 		std::istringstream str(connection);
 		std::string firstVertStr;
 		std::string endVertStr;
 		std::string weightStr;
-
 		str >> firstVertStr >> endVertStr >> weightStr;
-
 		add(firstVertStr, endVertStr, std::stoi(weightStr));
 	}
-
 	graphFile.close();
 }
 
@@ -155,12 +130,9 @@ void Graph::depthFirstTraversal(std::string startLabel,
 		cout << "Graph is empty." << endl;
 		return;
 	}
-
 	unvisitVertices();
 	resetAllNeighbors();
-
 	Vertex* startingVertex = findVertex(startLabel);
-
 	depthFirstTraversalHelper(startingVertex, visit);
 	unvisitVertices();
 }
@@ -173,28 +145,20 @@ void Graph::breadthFirstTraversal(std::string startLabel,
 		cout << "Graph is empty." << endl;
 		return;
 	}
-
 	unvisitVertices();
 	resetAllNeighbors();
-
 	queue<Vertex*> bfsQueue;
-
 	Vertex* startingVertex = findVertex(startLabel);
 	startingVertex->resetNeighbor();
-
 	bfsQueue.push(startingVertex);
-	//visit(startLabel);
-	//startingVertex->visit();
-
-	//visitedVertList.push_back(startingVertex);
-
 	while (!bfsQueue.empty()) {
 		Vertex* currentVert = bfsQueue.front();
 		if (!currentVert->isVisited()) {
 			visit(currentVert->getLabel());
 			currentVert->visit();
 		}
-		for (Vertex* nextNeighbor = findVertex(currentVert->getCurrentNeighbor());
+		for (Vertex* nextNeighbor =
+				findVertex(currentVert->getCurrentNeighbor());
 			 nextNeighbor != currentVert;
 			 nextNeighbor = findVertex(currentVert->getNextNeighbor())) {
 			if (!nextNeighbor->isVisited()) {
@@ -217,33 +181,22 @@ void Graph::breadthFirstTraversal(std::string startLabel,
 
     cpplint gives warning to use pointer instead of a non-const map
     which I am ignoring for readability */
-
 void Graph::djikstraCostToAllVertices(
     std::string startLabel,
     std::map<std::string, int>& weight,
     std::map<std::string, std::string>& previous) {
-
 	if (vertices->empty()){
 		cout << "Graph is Empty" << endl;
 		return;
 	}
-
 	weight.clear();
 	previous.clear();
 	unvisitVertices();
 	resetAllNeighbors();
-
-
 	initializeDjikstraMaps(startLabel, weight, previous);
-
 	Vertex* startVertex = findVertex(startLabel);
-
-	//weight.find(startLabel)->second = 0;
-	//previous.find(startLabel)->second = "";
 	startVertex->visit();
-
 	djikstraHelper(startLabel, weight, previous, 0);
-
 }
 
 void Graph::djikstraHelper(std::string currLabel,
@@ -274,7 +227,6 @@ void Graph::djikstraHelper(std::string currLabel,
 					return;
 				} else {
 					continue;
-					//nextNeighbor = findVertex(currVert->getNextNeighbor());
 				}
 			}
 		}
@@ -304,7 +256,7 @@ void Graph::depthFirstTraversalHelper(Vertex* startVertex,
 	startVertex->resetNeighbor();
 	for (Vertex* nextNeighbor = findVertex(startVertex->getCurrentNeighbor());
 		 nextNeighbor->getLabel() != startVertexLabel;
-		 nextNeighbor = findVertex(startVertex->getNextNeighbor())) /*this is causing issues*/{ ////////////////////////////////////////////////////!!!!!!!
+		 nextNeighbor = findVertex(startVertex->getNextNeighbor())) {
 		if (!nextNeighbor->isVisited()) {
 			depthFirstTraversalHelper(nextNeighbor, visit);
 		}
@@ -326,7 +278,6 @@ Vertex* Graph::findVertex(const std::string& vertexLabel) const {
 	_Rb_tree_iterator<pair<const string, Vertex *>> result =
 			vertices->find(vertexLabel);
 	if (result == vertices->end()) {
-		//cout << "Vertex " << vertexLabel << " does not exist." << endl;
 		return nullptr;
 	}
 	return result->second;

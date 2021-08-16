@@ -29,10 +29,6 @@ Vertex::Vertex(std::string label) {
 
 }
 
-Vertex::~Vertex() {
-	//adjacencyList.clear();
-}
-
 /** @return  The label of this vertex. */
 string Vertex::getLabel() const { 
     return this->vertexLabel; 
@@ -62,17 +58,13 @@ bool Vertex::isVisited() const {
 bool Vertex::connect(const string& endVertex, const int edgeWeight) { 
     Edge e(endVertex, edgeWeight);
     adjacencyList.emplace(endVertex, e); // before was emplace(this->vertexLabel, e)
-    //iterate w/iterator, check if this vertexlbl.second
-    //maybe put this up top?
     map<std::string, Edge>::iterator it;
     for (it = adjacencyList.begin(); it != adjacencyList.end(); it++) {
         if (it->second.getEndVertex() == this->vertexLabel) {
-            //connection to self - like A->A
             return false;
         }
     }
     return true; //default initialization
-    //how to handle the connections to itself? connections to same vertex?
 }
 
 /** Removes the edge between this vertex and the given one.
@@ -104,10 +96,6 @@ bool Vertex::disconnect(const std::string& endVertex) {
 int Vertex::getEdgeWeight(const std::string& endVertex)  { 
     //say this = D, end = F, get weight of 10
     //itreate!
-    /*if (endVertex == this->vertexLabel) {
-        return -1;
-    }*/
-
     map<std::string, Edge>::iterator it;
     for (it = adjacencyList.begin(); it != adjacencyList.end(); it++) {
         if (it->second.getEndVertex() == endVertex) {
@@ -149,11 +137,7 @@ void Vertex::resetNeighbor() {
     Returns the vertex label if there are no more neighbors
  @return  The label of the vertex's next neighbor. */
 std::string Vertex::getNextNeighbor() { 
-    //resetNeighbor(); // before was uncommented
     if (currentNeighbor != adjacencyList.end()) {
-        //currentNeighbor++; //--had this up here earlier, 
-	    		     //had potential to skip over a vertex
-	    		     //so i put it down below
         string currLbl = currentNeighbor->first;
 	currentNeighbor++;
         return currLbl;
