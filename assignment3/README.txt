@@ -43,8 +43,18 @@ The class that symbolizes a single vertex of the overall graph and its correspon
   
 
 EDGE CLASS:  
+Represents a single edge of the graph, connecting between two vertices. Has methods to represent weight and the end vertex label.
 
+  Edge(); -- empty edge constructor, sets weight to 0 and end vertex as empty string
 
+  Edge(const std::string& end, int weight); -- constructor to create an edge with a given weight and end vertex label
+
+  std::string getEndVertex() const; -- returns the end vertex that he edge connects to
+
+  int getWeight() const; -- return the weight/cost of travlleing via this edge
+  
 
 GRAPH CLASS:
+
+
 
