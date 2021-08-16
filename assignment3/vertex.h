@@ -1,3 +1,5 @@
+/* Assignment 3 was made by Pankhuri Singhal and Gabriel Oliver */
+
 #pragma once
 /**
  * Each vertex has a unique label

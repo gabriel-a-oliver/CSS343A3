@@ -1,3 +1,5 @@
+/* Assignment 3 was made by Pankhuri Singhal and Gabriel Oliver */
+
 /**
  * Used by vertex to keep track of all the vertices connects to
  * Each edge has a weight, possibly 0

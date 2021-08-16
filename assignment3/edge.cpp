@@ -1,3 +1,5 @@
+/* Assignment 3 was made by Pankhuri Singhal and Gabriel Oliver */
+
 #pragma once
 #ifndef EDGE_CPP
 #define EDGE_CPP

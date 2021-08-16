@@ -1,3 +1,5 @@
+/* Assignment 3 was made by Pankhuri Singhal and Gabriel Oliver */
+
 /**
  * A graph is made up of vertices and edges
  * A vertex can be connected to other vertices via weighted, directed edge
