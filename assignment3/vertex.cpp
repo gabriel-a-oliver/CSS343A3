@@ -158,6 +158,8 @@ bool Vertex::operator<(const Vertex& rightHandItem) const {
     return lhsLabel.compare(rhsLabel) < 0;
 }
 
+//gets the current neighbor of the vertex, otherwise it 
+//returns the invoking vertex label if the iterator is at the end of the list
 std::string Vertex::getCurrentNeighbor() {
 	if (currentNeighbor != adjacencyList.end()) {
 		string currLbl = currentNeighbor->first;
