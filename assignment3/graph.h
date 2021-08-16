@@ -91,10 +91,16 @@ class Graph {
     void depthFirstTraversalHelper(Vertex* startVertex,
                                    void visit(const std::string&));
 
+    // Parameters: string startLabel, map<string, int>& weight, map<string,
+    // 			   string>& previous
+    // Post: sets the default values for both maps.
     void initializeDjikstraMaps(std::string startLabel,
 								std::map<std::string, int>& weight,
 								std::map<std::string, std::string>& previous);
 
+    // Parameters: string startLabel, map<string, int>& weight, map<string,
+    // 			   string>& previous, int currWeight
+    // Post: Finds the shortest to each vertex in the maps
     void djikstraHelper(std::string currLabel,
 						std::map<std::string, int>& weight,
 						std::map<std::string, std::string>& previous,
@@ -109,10 +115,18 @@ class Graph {
     /** find a vertex, if it does not exist create it and return it */
     Vertex* findOrCreateVertex(const std::string& vertexLabel);
 
+    // Parameters: string start, string end
+    // Post: Determines whether the two vertices can be used in an operation,
+    // 		 such as connecting them together.
+    // Returns: bool true if both strings are not equal to each other, or
+    // 			there isn't an edge that starts at start and ends in end.
+    //			Returns bool false otherwise.
     bool verticesEdgePairCompatible(std::string start, std::string end) const;
 
+    // Post: Resets the adjacencyList to all vertices
 	void resetAllNeighbors();
 
+	// Post: Frees all the allocated memory in this instance of the graph class
 	void clearEverything();
 
 };  // end Graph

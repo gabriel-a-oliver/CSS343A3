@@ -205,6 +205,9 @@ void Graph::djikstraCostToAllVertices(
 	djikstraHelper(startLabel, weight, previous, 0);
 }
 
+// Parameters: string startLabel, map<string, int>& weight, map<string,
+// 			   string>& previous
+// Post: sets the default values for both maps.
 void Graph::initializeDjikstraMaps(std::string startLabel,
 								   std::map<std::string, int>& weight,
 								   std::map<std::string, std::string>& previous) {
@@ -216,6 +219,9 @@ void Graph::initializeDjikstraMaps(std::string startLabel,
 	}
 }
 
+// Parameters: string startLabel, map<string, int>& weight, map<string,
+// 			   string>& previous, int currWeight
+// Post: Finds the shortest to each vertex in the maps
 void Graph::djikstraHelper(std::string currLabel,
 						   std::map<std::string, int>& weight,
 						   std::map<std::string, std::string>& previous,
@@ -283,6 +289,12 @@ Vertex* Graph::findOrCreateVertex(const std::string& vertexLabel) {
 	return result;
 }
 
+// Parameters: string start, string end
+// Post: Determines whether the two vertices can be used in an operation,
+// 		 such as connecting them together.
+// Returns: bool true if both strings are not equal to each other, or
+// 			there isn't an edge that starts at start and ends in end.
+//			Returns bool false otherwise.
 bool Graph::verticesEdgePairCompatible(std::string start,
 									   std::string end) const {
 	if (start == end) {
@@ -309,12 +321,14 @@ bool Graph::verticesEdgePairCompatible(std::string start,
 	return true;
 }
 
+// Post: Resets the adjacencyList to all vertices
 void Graph::resetAllNeighbors() {
 	for (pair<string, Vertex*> currPair : *vertices) {
 		currPair.second->resetNeighbor();
 	}
 }
 
+// Post: Frees all the allocated memory in this instance of the graph class
 void Graph::clearEverything() {
 	for (pair<string, Vertex*> currPair : *vertices) {
 		delete currPair.second;
