@@ -1,4 +1,12 @@
 /* Assignment 3 was made by Pankhuri Singhal and Gabriel Oliver */
+/*
+Pankhuri Singhal, Gabriel Oliver
+CSS 343
+8/16/21
+Prof. Awad
+Imp file that represents a single edge of the graph, connecting between 
+two vertices. Has methods to represent weight and the end vertex label.
+*/
 
 #pragma once
 #ifndef EDGE_CPP
