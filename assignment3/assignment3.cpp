@@ -110,6 +110,20 @@ void testGraph0() {
     graphCostDisplay();
     cout << isOK(graphOut.str(), "B(1) C(4) via [B] "s)
          << "Djisktra" << endl;
+
+    cout << endl << "graph0.txt starting at C: " << endl;
+    graphOut.str("");
+    g.depthFirstTraversal("C", graphVisitor);
+    cout << isOK(graphOut.str(), "C "s) << "DFS" << endl;
+
+    graphOut.str("");
+    g.breadthFirstTraversal("C", graphVisitor);
+    cout << isOK(graphOut.str(), "C "s) << "BFS" << endl;
+
+    g.djikstraCostToAllVertices("C", weight, previous);
+    graphCostDisplay();
+    cout << isOK(graphOut.str(), ""s)
+    << "Djisktra" << endl;
 }
 
 void testGraph1() {
@@ -250,9 +264,94 @@ void testGraph2() {
     cout << "What is the edge weight of O->P? " << g.getEdgeWeight("O", "P") << endl;
 }
 
+void testGraph3() {
+	cout << endl << "testGraph3" << endl;
+	Graph g;
+	g.readFile("graph3.txt");
+
+	graphOut.str("");
+	g.depthFirstTraversal("A", graphVisitor);
+	cout << "Results of DFS algo starting at A: " << endl;
+	cout << graphOut.str() << endl;
+
+	graphOut.str("");
+	g.breadthFirstTraversal("A", graphVisitor);
+	cout << "Results of BFS algo starting at A: " << endl;
+	cout << graphOut.str() << endl;
+
+	g.djikstraCostToAllVertices("A", weight, previous);
+	graphCostDisplay();
+	cout << "Results of Djik algo starting at A: " << endl;
+	cout << graphOut.str() << endl;
+}
+void testGraph4() {
+	cout << endl << "testGraph4" << endl;
+	Graph g;
+	g.readFile("graph4.txt");
+
+	graphOut.str("");
+	g.depthFirstTraversal("A", graphVisitor);
+	cout << "Results of DFS algo starting at A: " << endl;
+	cout << graphOut.str() << endl;
+
+	graphOut.str("");
+	g.breadthFirstTraversal("A", graphVisitor);
+	cout << "Results of BFS algo starting at A: " << endl;
+	cout << graphOut.str() << endl;
+
+	g.djikstraCostToAllVertices("A", weight, previous);
+	graphCostDisplay();
+	cout << "Results of Djik algo starting at A: " << endl;
+	cout << graphOut.str() << endl;
+}
+void testGraph5() {
+	cout << endl << "testGraph5" << endl;
+	Graph g;
+	g.readFile("graph5.txt");
+
+	graphOut.str("");
+	g.depthFirstTraversal("A", graphVisitor);
+	cout << "Results of DFS algo starting at A: " << endl;
+	cout << graphOut.str() << endl;
+
+	graphOut.str("");
+	g.breadthFirstTraversal("A", graphVisitor);
+	cout << "Results of BFS algo starting at A: " << endl;
+	cout << graphOut.str() << endl;
+
+	g.djikstraCostToAllVertices("A", weight, previous);
+	graphCostDisplay();
+	cout << "Results of Djik algo starting at A: " << endl;
+	cout << graphOut.str() << endl;
+}
+void testGraph6() {
+	cout << endl << "testGraph6mt2" << endl;
+	Graph g;
+	g.readFile("graph6mt2.txt");
+
+	graphOut.str("");
+	g.depthFirstTraversal("A", graphVisitor);
+	cout << "Results of DFS algo starting at A: " << endl;
+	cout << graphOut.str() << endl;
+
+	graphOut.str("");
+	g.breadthFirstTraversal("A", graphVisitor);
+	cout << "Results of BFS algo starting at A: " << endl;
+	cout << graphOut.str() << endl;
+
+	g.djikstraCostToAllVertices("A", weight, previous);
+	graphCostDisplay();
+	cout << "Results of Djik algo starting at A: " << endl;
+	cout << graphOut.str() << endl;
+}
+
 int main() {
     testGraph0();
     testGraph1();
     testGraph2();
+    testGraph3();
+    testGraph4();
+    testGraph5();
+    testGraph6();
     return 0;
 }
